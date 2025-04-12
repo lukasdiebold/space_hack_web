@@ -169,7 +169,7 @@
 'use cleint';
 import * as THREE from 'three';
 import React, { useRef } from 'react';
-import { useGLTF, useAnimations } from '@react-three/drei';
+import { useGLTF } from '@react-three/drei';
 import { GLTF } from 'three-stdlib';
 
 type GLTFResult = GLTF & {
@@ -181,13 +181,13 @@ type GLTFResult = GLTF & {
   };
 };
 
-type ActionName = 'Rotation';
-type GLTFActions = Record<ActionName, THREE.AnimationAction>;
+// type ActionName = 'Rotation';
+// type GLTFActions = Record<ActionName, THREE.AnimationAction>;
 
 export function Model(props: React.JSX.IntrinsicElements['group']) {
   const group = useRef<THREE.Group>(null);
 
-  const { nodes, materials, animations } = useGLTF(
+  const { nodes, materials } = useGLTF(
     '/mars_the_red_planet_free/scene.gltf'
   ) as unknown as GLTFResult;
 

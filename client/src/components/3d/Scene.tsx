@@ -1,15 +1,16 @@
 'use client';
 import { useFrame, useThree } from '@react-three/fiber';
-import React, { useRef } from 'react';
+import React from 'react';
 import {
   Environment,
-  OrbitControls,
+  // OrbitControls,
   PerspectiveCamera,
 } from '@react-three/drei';
 import { Physics, RigidBody } from '@react-three/rapier';
-import { Model } from '@/components/3d/Mars';
+import { Model as Mars } from '@/components/3d/Mars';
+import { Model as Rocket } from '@/components/3d/Rocket';
 import { useScroll, useTransform } from 'motion/react';
-import * as THREE from 'three';
+// import * as THREE from 'three';
 
 const Scene: React.FC = () => {
   const { camera } = useThree();
@@ -94,7 +95,11 @@ const Scene: React.FC = () => {
 
       {/* Model */}
       <RigidBody colliders='trimesh'>
-        <Model castShadow receiveShadow />
+        <Mars castShadow receiveShadow />
+      </RigidBody>
+
+      <RigidBody colliders='trimesh'>
+        <Rocket castShadow receiveShadow />
       </RigidBody>
     </Physics>
   );

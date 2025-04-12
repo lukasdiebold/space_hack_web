@@ -1,0 +1,11 @@
+Model Information:
+* title:	SpaceX Starship-With landing legs deployed
+* source:	https://sketchfab.com/3d-models/spacex-starship-with-landing-legs-deployed-168d98f7b4d747f88d301050ae645560
+* author:	AllThingsSpace (https://sketchfab.com/sunnychen753)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "SpaceX Starship-With landing legs deployed" (https://sketchfab.com/3d-models/spacex-starship-with-landing-legs-deployed-168d98f7b4d747f88d301050ae645560) by AllThingsSpace (https://sketchfab.com/sunnychen753) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
