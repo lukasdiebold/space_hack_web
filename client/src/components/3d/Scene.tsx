@@ -113,11 +113,6 @@ import React from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Stats, OrbitControls, Environment } from '@react-three/drei';
 
-import * as THREE from 'three';
-
-import { useRef, useState } from 'react';
-import { useFrame } from '@react-three/fiber';
-
 // import { Physics, RigidBody } from '@react-three/rapier';
 import { Model as Mars } from '@/components/3d/Mars';
 import { Model as Rocket } from '@/components/3d/Rocket';
