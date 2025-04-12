@@ -1,103 +1,114 @@
-import Image from "next/image";
+import SceneWrap from '@/components/3d/SceneWrap';
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className='h-[800vh] relative z-[-100] '>
+      <div className='fixed z-[-25] top-0 h-screen w-full bg-[radial-gradient(circle,_rgba(200,0,0,1)_0%,_rgba(0,0,0,1)_100%)]' />
+      <div className='sceneWrap fixed z-[-10] top-0 h-screen w-full '>
+        <SceneWrap />
+      </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* <div className='up z-10  w-full absolute overflow-hidden hidden md:inline-block'>
+        <div className='page h-screen '>
+          <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'>
+            <p className='text-white lg:w-2xl px-2.5 text-[1rem] lg:text-2xl mb-20 '>
+              The Nissan Silvia (Japanese: 日産・シルビア, Hepburn: Nissan
+              Shirubia) is the series of small sports cars produced by Nissan.
+              Versions of the Silvia have been marketed as the 200SX or 240SX
+              for export, with some export versions being sold under the Datsun
+              brand.
+            </p>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <div className='page h-screen '>
+          <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'>
+            <p className='text-white text-center text-[1rem] lg:text-2xl mb-20 '>
+              The Nissan Silvia S15 was the final and most refined version of
+              the Silvia lineup, produced from 1999 to 2002. It was powered by
+              the SR20DET , a 2.0L turbocharged inline-four engine, producing
+              around 250 hp in the Spec-R model. This version featured a
+              ball-bearing turbo , improved cooling, and a 6-speed manual
+              transmission , making it a favorite among enthusiasts. The
+              non-turbo SR20DE version was also available, delivering around 165
+              hp . Thanks to its lightweight chassis, rear-wheel drive layout,
+              and tunable engine, the S15 remains a top choice for drifting and
+              performance builds.
+            </p>
+          </div>
+        </div>
+        <div className='page h-screen'></div>
+        <div className='page h-screen '>
+          <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'>
+            <p className='text-white  lg:w-2xl px-2.5 md:text-[1rem] lg:text-xl '>
+              The Nissan Silvia S15 is a true Japanese legend, known for its
+              balance, agility, and drifting prowess. With a lightweight
+              chassis, turbocharged SR20DET engine, and rear-wheel-drive layout,
+              it became a favorite in street racing and motorsports. The S15
+              dominated touge battles and drift competitions, cementing its
+              status in JDM culture. Its sleek design and performance keep it
+              highly sought after, and with the US import ban nearing its end,
+              its legacy as a top-tier JDM icon continues to grow.
+            </p>
+          </div>
+        </div>
+        <div className='page h-screen '></div>
+        <div className='page h-screen '></div>
+        <div className='page h-screen '></div>
+        <div className='page h-screen '>
+          <div className='container m-auto flex flex-col justify-end items-center h-[100vh]'>
+            <p className='text-white  text-[11 em] lg:text-2xl  mb-10'>
+              This Website Made by{' '}
+              <a href='https://www.wanttoknow.me/' className='underline '>
+                Farid Mustafayev
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className='down z-[-20]  w-full  absolute  overflow-hidden '>
+        <div className='page h-screen '>
+          <div className='container m-auto flex flex-col justify-center h-[50vh]'>
+            <h4 className='lg:text-[5rem] text-[3rem] text-white font-bold pl-3'>
+              Nissan
+            </h4>
+            <h1 className='text-[6rem] pl-3 lg:text-[18rem] leading-10 mb-10 lg:mb-0 lg:leading-44 text-white font-bold '>
+              SILVIA
+            </h1>
+          </div>
+        </div>
+        <div className='page h-screen'>
+          <div className='container m-auto flex flex-col justify-center items-center h-[50vh]'>
+            <h1 className='text-[6rem] lg:text-[18rem] leading-10 mb-10 lg:mb-0 lg:leading-44 text-white font-bold '>
+              LS V8
+            </h1>
+            <h4 className='text-[5rem] text-white font-bold'>engine</h4>
+          </div>
+        </div>
+        <div className='page h-screen '></div>
+        <div className='page h-screen '>
+          <div className='container m-auto flex flex-col justify-center items-end h-[50vh]'>
+            <h4 className=' xl:text-[5rem] text-[2rem]  text-white font-bold mt-80'>
+              Japanese
+            </h4>
+            <h1 className='text-[6rem]  leading-none xl:text-[18rem]  mb-10 xl:mb-0 xl:leading-44 text-white font-bold '>
+              Legend
+            </h1>
+          </div>
+        </div>
+        <div className='page h-screen '></div>
+        <div className='page h-screen '></div>
+        <div className='page h-screen '></div>
+        <div className='page h-screen '>
+          <div className='container m-auto flex flex-col justify-center items-center h-[50vh]'>
+            <h4 className='text-[1rem] lg:text-[4rem] text-white font-bold'>
+              The Nissan Silvia isn’t just a car
+            </h4>
+            <h1 className='text-[1rem] lg:text-[3rem] leading-none text-center lg:leading-20 text-white font-bold  mb-20'>
+              "it’s a statement of style, speed, and pure driving passion."
+            </h1>
+          </div>
+        </div>
+      </div> */}
     </div>
   );
 }
