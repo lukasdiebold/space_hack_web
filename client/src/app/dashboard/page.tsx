@@ -3,33 +3,9 @@ import { Label } from "@/components/ui/label"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
-import { zodResolver } from "@hookform/resolvers/zod"
 import { SelectTrigger, Select, SelectValue, SelectContent, SelectItem } from "@/components/ui/select"
 
 export default function Page() {
-
-
-  const formSchema = z.object({
-    prompt: z.string(),
-    agent: z.custom((value) => {
-
-    })
-  })
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      prompt: "",
-
-    },
-  })
-
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values)
-  }
 
   return <section className="w-full h-full min-h-screen bg-black text-white p-5 flex flex-col justify-between">
     <h1 className="text-3xl">Good Afternoon, Mr. Hwang</h1>
