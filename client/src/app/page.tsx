@@ -2,7 +2,7 @@ import Scene from '@/components/3d/Scene';
 
 export default function Home() {
   return (
-    <div className='h-[100vh] relative'>
+    <div className='h-[100vh] relative z-[-100] '>
       {/* // <div className='h-[800vh] relative z-[-100] '>
     //   <div className='fixed z-[-25] top-0 h-screen w-full bg-[radial-gradient(circle,_rgba(200,0,0,1)_0%,_rgba(0,0,0,1)_100%)]' />
     //   <div className='sceneWrap fixed z-[-10] top-0 h-screen w-full '> */}

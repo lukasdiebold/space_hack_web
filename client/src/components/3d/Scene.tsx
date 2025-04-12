@@ -121,22 +121,20 @@ import { useFrame } from '@react-three/fiber';
 // import { Physics, RigidBody } from '@react-three/rapier';
 import { Model as Mars } from '@/components/3d/Mars';
 import { Model as Rocket } from '@/components/3d/Rocket';
+import Stars from './Stars';
 
 export default function Scene() {
   return (
-    <Canvas camera={{ position: [0, 0, 3] }}>
-      {/* <mesh>
-        <boxGeometry args={[2, 2, 2]} />
-        <meshPhongMaterial />
-      </mesh> */}
+    <Canvas style={{ backgroundColor: 'black' }}>
+      <OrbitControls />
+      <Stats />
       <Environment preset='city' environmentIntensity={0.2} />
       <axesHelper args={[100]} />
       <Rocket castShadow receiveShadow />
       <Mars castShadow receiveShadow />
       <ambientLight intensity={0.1} />
-      <directionalLight position={[0, 0, 5]} color='white' />
-      <OrbitControls />
-      <Stats />
+      <directionalLight position={[1, 1, 1]} intensity={2} />
+      <Stars />
     </Canvas>
   );
 }
