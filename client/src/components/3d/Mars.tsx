@@ -169,7 +169,7 @@
 'use cleint';
 import * as THREE from 'three';
 import React, { useRef } from 'react';
-import { useGLTF } from '@react-three/drei';
+import { Center, useGLTF } from '@react-three/drei';
 import { GLTF } from 'three-stdlib';
 
 type GLTFResult = GLTF & {
@@ -188,44 +188,46 @@ export function Model(props: React.JSX.IntrinsicElements['group']) {
   const group = useRef<THREE.Group>(null);
 
   const { nodes, materials } = useGLTF(
-    '/mars_the_red_planet_free/scene.gltf'
+    '/mars/scene.gltf'
   ) as unknown as GLTFResult;
 
   // const { actions } = useAnimations<GLTFActions>(animations, group)
 
   return (
-    <group ref={group} {...props} dispose={null} scale={3}>
-      <group name='Sketchfab_Scene'>
-        <group
-          name='Sketchfab_model'
-          rotation={[-1.413, 0, 0]}
-          userData={{ name: 'Sketchfab_model' }}>
-          <group name='root' userData={{ name: 'root' }}>
-            <group
-              name='GLTF_SceneRootNode'
-              rotation={[Math.PI / 2, 0, 0]}
-              userData={{ name: 'GLTF_SceneRootNode' }}>
+    <Center position={[0, 0, 0]} scale={8}>
+      <group ref={group} {...props}>
+        <group name='Sketchfab_Scene'>
+          <group
+            name='Sketchfab_model'
+            rotation={[-1.413, 0, 0]}
+            userData={{ name: 'Sketchfab_model' }}>
+            <group name='root' userData={{ name: 'root' }}>
               <group
-                name='mars_1'
-                rotation={[Math.PI, Math.PI / 2, 0]}
-                scale={0.4}
-                position={[0, 0, 0]}
-                userData={{ name: 'mars_1' }}>
-                <mesh
-                  name='Object_4'
-                  castShadow
-                  receiveShadow
-                  geometry={nodes.Object_4.geometry}
-                  material={materials.mars}
-                  userData={{ name: 'Object_4' }}
-                />
+                name='GLTF_SceneRootNode'
+                rotation={[Math.PI / 2, 0, 0]}
+                userData={{ name: 'GLTF_SceneRootNode' }}>
+                <group
+                  name='mars_1'
+                  rotation={[Math.PI, Math.PI / 2, 0]}
+                  scale={0.4}
+                  position={[0, 0, 0]}
+                  userData={{ name: 'mars_1' }}>
+                  <mesh
+                    name='Object_4'
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.Object_4.geometry}
+                    material={materials.mars}
+                    userData={{ name: 'Object_4' }}
+                  />
+                </group>
               </group>
             </group>
           </group>
         </group>
       </group>
-    </group>
+    </Center>
   );
 }
 
-useGLTF.preload('/mars_the_red_planet_free/scene.gltf');
+useGLTF.preload('/mars/scene.gltf');
