@@ -10,7 +10,7 @@ export default function CameraPage() {
   const handleStreaming = async () => {
 
       const pc = new RTCPeerConnection();
-      const localStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" }, audio: false });
+      const localStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" }, audio: false });
 
       localStream.getTracks().forEach((track) => {
         pc.addTrack(track, localStream);
