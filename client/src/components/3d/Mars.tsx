@@ -311,9 +311,9 @@ export function Model(props: React.JSX.IntrinsicElements['group']) {
           center: { x: center.x, y: center.y, z: center.z },
         });
 
-        updateObject('rocket', {
-          position: [size.x, 0, 0],
-        });
+        // updateObject('rocket', {
+        //   position: [size.x, 0, 0],
+        // });
 
         console.log('Mars model measured:', size);
 

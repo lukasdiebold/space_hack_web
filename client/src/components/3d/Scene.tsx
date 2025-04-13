@@ -7,62 +7,85 @@ import {
   PerspectiveCamera,
 } from '@react-three/drei';
 import { Physics, RigidBody } from '@react-three/rapier';
-import { Model } from '@/components/3d/Rocket';
+import { Model } from '@/components/3d/RocketNew';
+import { Model as Mars } from '@/components/3d/Mars';
 import { useScroll, useTransform } from 'motion/react';
 import * as THREE from 'three';
 import Stars from './Stars';
 
 const Scene: React.FC = () => {
+  // Camera position animations with more complex movements
+
   const { camera } = useThree();
   const { scrollYProgress } = useScroll();
 
   const px = useTransform(
     scrollYProgress,
-    [0, 0.25, 0.5, 0.75, 1],
-    [3, -5, 0, 4, 0]
+    [0, 0.15, 0.25, 0.35, 0.5, 0.65, 0.75, 0.85, 1],
+    [3, 6, -5, -8, 0, 2, 4, -3, 0]
   );
-  const pz = useTransform(
-    scrollYProgress,
-    [0, 0.25, 0.5, 0.75, 1],
-    [0, 0, 0, 2, 0]
-  );
+
   const py = useTransform(
     scrollYProgress,
-    [0, 0.25, 0.5, 0.75, 1],
-    [5, 5, -5, 6, 5]
+    [0, 0.15, 0.25, 0.35, 0.5, 0.65, 0.75, 0.85, 1],
+    [5, 8, 5, 0, -5, -3, 6, 7, 2]
   );
+
+  const pz = useTransform(
+    scrollYProgress,
+    [0, 0.15, 0.25, 0.35, 0.5, 0.65, 0.75, 0.85, 1],
+    [0, 2, 0, -3, 0, 4, 2, 1, 0]
+  );
+
+  // Camera rotation/lookAt animations
   const Lookx = useTransform(
     scrollYProgress,
-    [0, 0.25, 0.5, 0.75, 1],
-    [0, 0, -0.8, 0, 0]
+    [0, 0.15, 0.25, 0.35, 0.5, 0.65, 0.75, 0.85, 1],
+    [0, 0.5, 0, -0.5, -0.8, 0.3, 0, -0.4, 0]
   );
-  const Lookz = useTransform(
-    scrollYProgress,
-    [0, 0.25, 0.5, 0.75, 1],
-    [0, 0, 0, 0, 0]
-  );
+
   const Looky = useTransform(
     scrollYProgress,
-    [0, 0.25, 0.5, 0.75, 1],
-    [0, 0, 0, 0, 0]
+    [0, 0.15, 0.25, 0.35, 0.5, 0.65, 0.75, 0.85, 1],
+    [0, 0.2, 0.5, 0, 0, -0.5, 0.3, 0.7, -2]
+  );
+
+  const Lookz = useTransform(
+    scrollYProgress,
+    [0, 0.15, 0.25, 0.35, 0.5, 0.65, 0.75, 0.85, 1],
+    [0, 0, 0.3, -0.2, 0, 0.4, 0.1, -0.3, 0]
+  );
+
+  // Optional: Add camera roll for even more dynamic effect
+  const cameraRoll = useTransform(
+    scrollYProgress,
+    [0, 0.15, 0.25, 0.35, 0.5, 0.65, 0.75, 0.85, 1],
+    [0, 0.1, 0, -0.2, 0.15, 0, -0.1, 0.05, 0]
   );
 
   useFrame(() => {
-    console.log('camera', camera.position);
+    // console.log('camera', camera.position);
     const xPos = px.get();
-    const zPos = pz.get();
     const yPos = py.get();
+    const zPos = pz.get();
     const xLook = Lookx.get();
-    const zLook = Lookz.get();
     const yLook = Looky.get();
-    camera.position.set(xPos, zPos, yPos);
-    camera.lookAt(xLook, zLook, yLook);
-  });
+    const zLook = Lookz.get();
+    const roll = cameraRoll.get();
 
+    // Set camera position
+    camera.position.set(xPos, zPos, yPos);
+
+    // Set camera look target
+    camera.lookAt(xLook, zLook, yLook);
+
+    // Apply roll rotation (optional, for more dramatic effect)
+    camera.rotation.z = roll;
+  });
   return (
     // <Physics>
     <>
-      {/* <axesHelper args={[100]} /> */}
+      <axesHelper args={[100]} />
       <PerspectiveCamera makeDefault fov={window.innerWidth < 768 ? 40 : 20} />
       <Environment preset='city' environmentIntensity={0.2} />
 
@@ -96,6 +119,7 @@ const Scene: React.FC = () => {
       {/* Model */}
       {/* <RigidBody colliders='trimesh'> */}
       <Model castShadow receiveShadow />
+      <Mars castShadow receiveShadow />
       <Stars />
       {/* </RigidBody> */}
       {/* </Physics> */}
