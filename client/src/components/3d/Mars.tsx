@@ -336,9 +336,9 @@ export function Model(props: React.JSX.IntrinsicElements['group']) {
     <Center position={marsObject.position} scale={marsObject.scale}>
       {/* Use motion.group from framer-motion-3d for animations */}
       <motion.group
-        //@ts-ignore
+        //@ts-expect-error
         ref={group}
-        //@ts-ignore
+        //@ts-expect-error
         rotation={marsObject.rotation}
         // Add framer-motion animation props
         animate={{
