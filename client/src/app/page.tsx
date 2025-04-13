@@ -12,7 +12,7 @@ import { AuroraText } from '@/components/magicui/aurora-text';
 export default function Home() {
   return (
     <ObjectContextProvider>
-      <div className='h-[1800vh] relative z-[-100] '>
+      <div className='h-[1800vh] relative z-[-100]'>
         <div className='fixed z-[-25] top-0 h-screen w-full bg-transparent' />
         <div className='sceneWrap fixed z-[-10] top-0 h-screen w-full '>
           <SceneWrap />
@@ -32,117 +32,55 @@ export default function Home() {
             </div>
           </div>
           <div className='page h-screen'>
-            <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'>
-              <p className='text-white  lg:w-2xl px-2.5 md:text-[1rem] lg:text-xl '>
-                <Atmospheric />
-              </p>
-            </div>
+            <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'></div>
           </div>
 
           <div className='page h-screen '>
             <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'>
-              <p className='text-white  lg:w-2xl px-2.5 md:text-[1rem] lg:text-xl '>
-                AAA
-              </p>
+              <Atmospheric />
             </div>
           </div>
           <div className='page h-screen '>
-            <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'>
-              <p className='text-white  lg:w-2xl px-2.5 md:text-[1rem] lg:text-xl '>
-                AAA
-              </p>
-            </div>
+            <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'></div>
           </div>
           <div className='page h-screen '>
-            <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'>
-              <p className='text-white  lg:w-2xl px-2.5 md:text-[1rem] lg:text-xl '>
-                AAA
-              </p>
-            </div>
+            <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'></div>
           </div>
           <div className='page h-screen '>
-            <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'>
-              <p className='text-white  lg:w-2xl px-2.5 md:text-[1rem] lg:text-xl '>
-                AAA
-              </p>
-            </div>
+            <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'></div>
           </div>
           <div className='page h-screen '>
-            <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'>
-              <p className='text-white  lg:w-2xl px-2.5 md:text-[1rem] lg:text-xl '>
-                AAA
-              </p>
-            </div>
+            <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'></div>
           </div>
           <div className='page h-screen '>
-            <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'>
-              <p className='text-white  lg:w-2xl px-2.5 md:text-[1rem] lg:text-xl '>
-                AAA
-              </p>
-            </div>
+            <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'></div>
           </div>
           <div className='page h-screen '>
-            <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'>
-              <p className='text-white  lg:w-2xl px-2.5 md:text-[1rem] lg:text-xl '>
-                AAA
-              </p>
-            </div>
+            <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'></div>
           </div>
           <div className='page h-screen '>
-            <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'>
-              <p className='text-white  lg:w-2xl px-2.5 md:text-[1rem] lg:text-xl '>
-                AAA
-              </p>
-            </div>
+            <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'></div>
           </div>
           <div className='page h-screen '>
-            <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'>
-              <p className='text-white  lg:w-2xl px-2.5 md:text-[1rem] lg:text-xl '>
-                AAA
-              </p>
-            </div>
+            <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'></div>
           </div>
           <div className='page h-screen '>
-            <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'>
-              <p className='text-white  lg:w-2xl px-2.5 md:text-[1rem] lg:text-xl '>
-                AAA
-              </p>
-            </div>
+            <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'></div>
           </div>
           <div className='page h-screen '>
-            <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'>
-              <p className='text-white  lg:w-2xl px-2.5 md:text-[1rem] lg:text-xl '>
-                AAA
-              </p>
-            </div>
+            <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'></div>
           </div>
           <div className='page h-screen '>
-            <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'>
-              <p className='text-white  lg:w-2xl px-2.5 md:text-[1rem] lg:text-xl '>
-                AAA
-              </p>
-            </div>
+            <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'></div>
           </div>
           <div className='page h-screen '>
-            <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'>
-              <p className='text-white  lg:w-2xl px-2.5 md:text-[1rem] lg:text-xl '>
-                AAA
-              </p>
-            </div>
+            <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'></div>
           </div>
           <div className='page h-screen '>
-            <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'>
-              <p className='text-white  lg:w-2xl px-2.5 md:text-[1rem] lg:text-xl '>
-                AAA
-              </p>
-            </div>
+            <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'></div>
           </div>
           <div className='page h-screen '>
-            <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'>
-              <p className='text-white  lg:w-2xl px-2.5 md:text-[1rem] lg:text-xl '>
-                AAA
-              </p>
-            </div>
+            <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'></div>
           </div>
         </div>
       </div>
