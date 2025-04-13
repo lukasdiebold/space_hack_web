@@ -25,9 +25,12 @@ import { CardHeader } from '@/components/ui/card';
 import { CardTitle } from '@/components/ui/card';
 import { CardDescription } from '@/components/ui/card';
 
+import { ScrollProgress } from '@/components/magicui/scroll-progress';
+
 export default function Home() {
   return (
     <ObjectContextProvider>
+      <ScrollProgress />
       <div className='h-[1800vh] relative z-[-100]'>
         <div className='fixed z-[-25] top-0 h-screen w-full bg-transparent' />
         <div className='sceneWrap fixed z-[-10] top-0 h-screen w-full'>
@@ -169,9 +172,27 @@ export default function Home() {
           <div className='page h-screen'>
             <div className='container m-auto flex flex-col justify-end h-[100vh]'></div>
           </div>
+
+          {/* <div className='page h-screen'>
+            <div className='container m-auto flex flex-col justify-center items-center h-[50vh]'>
+              <Button>
+                <Link href='/dashboard'>Access Terminal</Link>
+              </Button>
+            </div>
+          </div> */}
           <div className='page h-screen'>
-            <div className='container m-auto flex flex-col justify-end h-[100vh]'></div>
+            <div className='container m-auto flex flex-col justify-center items-center h-[50vh]'>
+              <h1 className='text-4xl font-bold tracking-tighter md:text-5xl lg:text-7xl text-white'>
+                <HyperText>The Seed</HyperText>
+              </h1>
+              <div className='flex flex-col items-center mt-4'>
+                <Button>
+                  <Link href='/dashboard'>Access Terminal</Link>
+                </Button>
+              </div>
+            </div>
           </div>
+
           <div className='page h-screen'>
             <div className='container m-auto flex flex-col justify-end h-[100vh]'></div>
           </div>
