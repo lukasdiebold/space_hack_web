@@ -104,7 +104,7 @@ const Scene: React.FC = () => {
     // Set up a listener for the scrollYProgress changes
     const unsubscribe = scrollYProgress.onChange((value) => {
       // Update state based on scroll position
-      console.log('Scroll Progress:', value);
+      // console.log('Scroll Progress:', value);
       if (value > 0.47228181099695155) {
         setShowMars(true);
         // updateObject('mars', {
