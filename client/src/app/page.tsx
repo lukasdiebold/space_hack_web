@@ -26,7 +26,7 @@ export default function Home() {
               </h1>
             </div>
           </div>
-          <div className='page h-screen '>
+          <div className='page h-screen'>
             <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'>
               <Mass />
             </div>
@@ -35,51 +35,56 @@ export default function Home() {
             <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'></div>
           </div>
 
-          <div className='page h-screen '>
+          <div className='page h-screen'>
             <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'>
+              <Energy />
               <Atmospheric />
             </div>
           </div>
-          <div className='page h-screen '>
+          <div className='page h-screen'>
             <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'></div>
           </div>
-          <div className='page h-screen '>
+          <div className='page h-screen'>
+            <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'>
+              <Water />
+            </div>
+          </div>
+          <div className='page h-screen'>
             <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'></div>
           </div>
-          <div className='page h-screen '>
+          <div className='page h-screen'>
+            <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'>
+              <Greenhouse />
+            </div>
+          </div>
+          <div className='page h-screen'>
             <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'></div>
           </div>
-          <div className='page h-screen '>
+          <div className='page h-screen'>
             <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'></div>
           </div>
-          <div className='page h-screen '>
+          <div className='page h-screen'>
             <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'></div>
           </div>
-          <div className='page h-screen '>
+          <div className='page h-screen'>
             <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'></div>
           </div>
-          <div className='page h-screen '>
+          <div className='page h-screen'>
             <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'></div>
           </div>
-          <div className='page h-screen '>
+          <div className='page h-screen'>
             <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'></div>
           </div>
-          <div className='page h-screen '>
+          <div className='page h-screen'>
             <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'></div>
           </div>
-          <div className='page h-screen '>
+          <div className='page h-screen'>
             <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'></div>
           </div>
-          <div className='page h-screen '>
+          <div className='page h-screen'>
             <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'></div>
           </div>
-          <div className='page h-screen '>
-            <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'></div>
-          </div>
-          <div className='page h-screen '>
-            <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'></div>
-          </div>
-          <div className='page h-screen '>
+          <div className='page h-screen'>
             <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'></div>
           </div>
         </div>
