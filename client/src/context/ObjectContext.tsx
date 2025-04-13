@@ -41,9 +41,9 @@ export function ObjectContextProvider({
   const factor = 2; // Adjust this factor as needed
   const [objects, setObjects] = useState<Record<string, ObjectProperties>>({
     mars: {
-      position: [0, 0, 0],
+      position: [0, -2, 0],
       rotation: [0, 0, 0],
-      scale: 8 * factor,
+      scale: 4 * factor,
       size: { width: 0, height: 0, depth: 0 },
       center: { x: 0, y: 0, z: 0 },
     },
