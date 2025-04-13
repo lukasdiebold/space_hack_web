@@ -88,14 +88,11 @@ export default function Page() {
     const prompt = inputRef.current.value;
     inputRef.current.value = "";
     const robotId = agents[selectedAgentIndex].robotId;
-    fetch(`${api}/v1/robots/${robotId}/task`, {
+    fetch(`${api}/v1/robots/Test/task`, {
       method: "POST",
       body: JSON.stringify({
         robot_id: robotId,
-        task: {
-          name: prompt,
-          system_prompt: prompt
-        }
+        task: prompt  
       })
     })
 

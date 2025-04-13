@@ -25,6 +25,8 @@ import { CardHeader } from '@/components/ui/card';
 import { CardTitle } from '@/components/ui/card';
 import { CardDescription } from '@/components/ui/card';
 
+import image from "./../../public/frame.png"
+
 export default function Home() {
   return (
     <ObjectContextProvider>
@@ -176,7 +178,7 @@ export default function Home() {
           </div>
 
           {/* Final page */}
-          <div className='page h-screen'>
+          <div className='page h-screen flex items-end'>
             <div className='container m-auto flex flex-col justify-center items-center h-[50vh]'>
               <h1 className='text-4xl font-bold tracking-tighter md:text-5xl lg:text-7xl text-white'>
                 <HyperText>The Seed</HyperText>
@@ -185,6 +187,7 @@ export default function Home() {
                 <Button>
                   <Link href='/dashboard'>Access Terminal</Link>
                 </Button>
+                <Image className="py-8" style={{borderRadius: "10px", overflow: "hidden"}} alt="qrcode" src={image} width={300} />
               </div>
             </div>
           </div>
