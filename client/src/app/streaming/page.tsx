@@ -1,5 +1,5 @@
 'use client'
-import { useContext, useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { collection, doc, onSnapshot, setDoc } from "firebase/firestore"
 import { appFirestore } from '@/lib/firebase/db';
 
@@ -17,7 +17,6 @@ export default function CameraPage() {
       })
 
       const callDoc = doc(collection(appFirestore, "calls"), inputRef.current.value);
-      const offerCandidates = collection(callDoc, "offerCandidates");
       const answerCandidates = collection(callDoc, "answerCandidates")
 
       const offerDescription = await pc.createOffer();

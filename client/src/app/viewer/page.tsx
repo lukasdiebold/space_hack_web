@@ -1,6 +1,6 @@
 'use client'
-import { useContext, useEffect, useRef } from 'react';
-import { addDoc, collection, doc, getDoc, getDocs, limit, onSnapshot, query, updateDoc } from 'firebase/firestore';
+import {  useRef } from 'react';
+import { addDoc, collection, doc, getDoc,  onSnapshot, updateDoc } from 'firebase/firestore';
 import { appFirestore } from '@/lib/firebase/db';
 
 export default function ViewerPage() {

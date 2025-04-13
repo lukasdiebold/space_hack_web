@@ -109,7 +109,7 @@
 
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Stats, OrbitControls, Environment } from '@react-three/drei';
 

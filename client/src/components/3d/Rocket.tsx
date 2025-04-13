@@ -1,7 +1,7 @@
 'use client';
 
 import * as THREE from 'three';
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Center, useGLTF } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { GLTF } from 'three-stdlib';
@@ -307,7 +307,7 @@ export function Model(props: React.JSX.IntrinsicElements['group']) {
       scale={rocketObject.scale}
       rotation={rocketObject.rotation}>
       <motion.group
-        // @ts-ignore
+        // @ts-expect-error
         ref={group}
         {...props}
         // Add rocket-specific Framer Motion animations

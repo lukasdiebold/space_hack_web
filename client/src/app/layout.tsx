@@ -1,13 +1,9 @@
 'use client'
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { createContext, useEffect, useState } from "react";
 
 
-
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "firebase/app";
-  import firestore, { Firestore, getFirestore } from "firebase/firestore";
+  // Import the functions you need from the SDKs you need;
   // TODO: Add SDKs for Firebase products that you want to use
 
 const geistSans = Geist({
