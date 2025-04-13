@@ -41,9 +41,7 @@ export default function Home() {
 
           <div className='page h-screen '>
             <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'>
-              <p className='text-white  lg:w-2xl px-2.5 md:text-[1rem] lg:text-xl '>
-                AAA
-              </p>
+              <Energy />
             </div>
           </div>
           <div className='page h-screen '>
@@ -55,16 +53,12 @@ export default function Home() {
           </div>
           <div className='page h-screen '>
             <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'>
-              <p className='text-white  lg:w-2xl px-2.5 md:text-[1rem] lg:text-xl '>
-                AAA
-              </p>
+              <Water />
             </div>
           </div>
           <div className='page h-screen '>
             <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'>
-              <p className='text-white  lg:w-2xl px-2.5 md:text-[1rem] lg:text-xl '>
-                AAA
-              </p>
+              <Greenhouse />
             </div>
           </div>
           <div className='page h-screen '>
