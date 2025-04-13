@@ -37,18 +37,20 @@ export function ObjectContextProvider({
   children: React.ReactNode;
 }) {
   // Store positions and other properties of multiple objects
+
+  const factor = 4; // Adjust this factor as needed
   const [objects, setObjects] = useState<Record<string, ObjectProperties>>({
     mars: {
       position: [0, 0, 0],
       rotation: [0, 0, 0],
-      scale: 8,
+      scale: 8 * factor,
       size: { width: 0, height: 0, depth: 0 },
       center: { x: 0, y: 0, z: 0 },
     },
     rocket: {
-      position: [0, 1.2, 0],
-      rotation: [Math.PI / 2, 0, 0],
-      scale: 0.0005,
+      position: [0, 0, 0],
+      rotation: [0, 0, -Math.PI / 2],
+      scale: 0.0005 * factor,
       size: { width: 0, height: 0, depth: 0 },
       center: { x: 0, y: 0, z: 0 },
     },

@@ -122,7 +122,7 @@ export default function Scene() {
   return (
     <Canvas
       style={{ backgroundColor: 'black' }}
-      camera={{ position: [0, 0, 3] }}>
+      camera={{ position: [10, 0, 0], rotation: [Math.PI / 2, 0, 0] }}>
       <OrbitControls />
       <Stats />
       <Environment preset='city' environmentIntensity={0.2} />

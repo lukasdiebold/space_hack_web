@@ -1,7 +1,7 @@
 'use client';
 
 import * as THREE from 'three';
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { Center, useGLTF } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { GLTF } from 'three-stdlib';
@@ -82,6 +82,188 @@ export function Model(props: React.JSX.IntrinsicElements['group']) {
     '/rocket/scene.gltf'
   ) as unknown as GLTFResult;
 
+  // const [keys, setKeys] = useState({
+  //   w: false,
+  //   a: false,
+  //   s: false,
+  //   d: false,
+  //   space: false,
+  //   shift: false,
+  // });
+
+  // // Movement speed and parameters
+  // const speed = useRef(0.001);
+  // const rotationSpeed = useRef(0.05);
+  // const maxSpeed = useRef(0.3);
+
+  // // Direction vector for movement
+  // const direction = useRef(new Vector3(0, 0, 1));
+
+  // // Current velocity
+  // const velocity = useRef(new Vector3(0, 0, 0));
+
+  // // Current rocket position and rotation
+  // const position = useRef(new Vector3(...rocketObject.position));
+  // const rotation = useRef(new THREE.Euler(...rocketObject.rotation));
+
+  // // Setup keyboard listeners
+  // useEffect(() => {
+  //   const handleKeyDown = (e: KeyboardEvent) => {
+  //     if (e.repeat) return; // Prevent key repeat
+
+  //     switch (e.key.toLowerCase()) {
+  //       case 'w':
+  //         setKeys((prev) => ({ ...prev, w: true }));
+  //         break;
+  //       case 'a':
+  //         setKeys((prev) => ({ ...prev, a: true }));
+  //         break;
+  //       case 's':
+  //         setKeys((prev) => ({ ...prev, s: true }));
+  //         break;
+  //       case 'd':
+  //         setKeys((prev) => ({ ...prev, d: true }));
+  //         break;
+  //       case ' ':
+  //         setKeys((prev) => ({ ...prev, space: true }));
+  //         break;
+  //       case 'shift':
+  //         setKeys((prev) => ({ ...prev, shift: true }));
+  //         break;
+  //     }
+  //   };
+
+  //   const handleKeyUp = (e: KeyboardEvent) => {
+  //     switch (e.key.toLowerCase()) {
+  //       case 'w':
+  //         setKeys((prev) => ({ ...prev, w: false }));
+  //         break;
+  //       case 'a':
+  //         setKeys((prev) => ({ ...prev, a: false }));
+  //         break;
+  //       case 's':
+  //         setKeys((prev) => ({ ...prev, s: false }));
+  //         break;
+  //       case 'd':
+  //         setKeys((prev) => ({ ...prev, d: false }));
+  //         break;
+  //       case ' ':
+  //         setKeys((prev) => ({ ...prev, space: false }));
+  //         break;
+  //       case 'shift':
+  //         setKeys((prev) => ({ ...prev, shift: false }));
+  //         break;
+  //     }
+  //   };
+
+  //   // Add event listeners
+  //   window.addEventListener('keydown', handleKeyDown);
+  //   window.addEventListener('keyup', handleKeyUp);
+
+  //   // Initial position and rotation
+  //   position.current.set(...rocketObject.position);
+  //   rotation.current.set(...rocketObject.rotation);
+
+  //   // Clean up
+  //   return () => {
+  //     window.removeEventListener('keydown', handleKeyDown);
+  //     window.removeEventListener('keyup', handleKeyUp);
+  //   };
+  // }, [rocketObject.position, rocketObject.rotation]);
+
+  // Measure the rocket size after loading
+  useEffect(() => {
+    if (group.current) {
+      const timeoutId = setTimeout(() => {
+        if (!group.current) return;
+        const boundingBox = new Box3().setFromObject(group.current);
+        const size = new Vector3();
+        boundingBox.getSize(size);
+
+        const center = new Vector3();
+        boundingBox.getCenter(center);
+
+        console.log('Rocket model measured:', size);
+        console.log('Rocket model measured:', objects);
+
+        updateObject('rocket', {
+          size: { width: size.x, height: size.y, depth: size.z },
+          center: { x: center.x, y: center.y, z: center.z },
+        });
+      }, 100);
+
+      return () => clearTimeout(timeoutId);
+    }
+  }, [updateObject]);
+
+  // Handle rocket movement based on keyboard input
+  // useFrame((state, delta) => {
+  //   if (!group.current || animationProgress.rocketOrbit) return;
+
+  //   // Calculate the forward direction based on current rotation
+  //   const forward = new Vector3(0, 0, 1);
+  //   const rotationMatrix = new THREE.Matrix4().makeRotationFromEuler(
+  //     rotation.current
+  //   );
+  //   forward.applyMatrix4(rotationMatrix);
+  //   forward.normalize();
+
+  //   // Calculate right vector (perpendicular to forward)
+  //   const right = new Vector3(1, 0, 0);
+  //   right.applyMatrix4(rotationMatrix);
+  //   right.normalize();
+
+  //   // Calculate up vector
+  //   const up = new Vector3(0, 1, 0);
+
+  //   // Update velocity based on keys pressed
+  //   if (keys.w) {
+  //     // Move forward
+  //     velocity.current.addScaledVector(forward, speed.current);
+  //   }
+  //   if (keys.s) {
+  //     // Move backward
+  //     velocity.current.addScaledVector(forward, -speed.current);
+  //   }
+  //   if (keys.a) {
+  //     // Rotate left around up axis
+  //     rotation.current.y -= rotationSpeed.current;
+  //   }
+  //   if (keys.d) {
+  //     // Rotate right around up axis
+  //     rotation.current.y += rotationSpeed.current;
+  //   }
+  //   if (keys.space) {
+  //     // Move up
+  //     velocity.current.addScaledVector(up, speed.current);
+  //   }
+  //   if (keys.shift) {
+  //     // Move down
+  //     velocity.current.addScaledVector(up, -speed.current);
+  //   }
+
+  //   // Apply drag to slow down when not accelerating
+  //   velocity.current.multiplyScalar(0.95);
+
+  //   // Limit maximum speed
+  //   if (velocity.current.length() > maxSpeed.current) {
+  //     velocity.current.normalize().multiplyScalar(maxSpeed.current);
+  //   }
+
+  //   // Update position
+  //   position.current.add(velocity.current);
+
+  //   // Update object position and rotation in the scene
+  //   group.current.position.copy(position.current);
+  //   group.current.rotation.copy(rotation.current);
+
+  //   // Update position in context for other components
+  //   updateObject('rocket', {
+  //     position: [position.current.x, position.current.y, position.current.z],
+  //     rotation: [rotation.current.x, rotation.current.y, rotation.current.z],
+  //   });
+  // });
+
   // Measure the rocket size after loading
   useEffect(() => {
     if (group.current) {
@@ -95,12 +277,12 @@ export function Model(props: React.JSX.IntrinsicElements['group']) {
         const center = new Vector3();
         boundingBox.getCenter(center);
 
-        updateObject('rocket', {
-          size: { width: size.x, height: size.y, depth: size.z },
-          center: { x: center.x, y: center.y, z: center.z },
-        });
+        // updateObject('rocket', {
+        //   size: { width: size.x, height: size.y, depth: size.z },
+        //   center: { x: center.x, y: center.y, z: center.z },
+        // });
 
-        console.log('Rocket model measured:', size);
+        // console.log('Rocket model measured:', size);
       }, 100);
 
       return () => clearTimeout(timeoutId);
@@ -141,6 +323,14 @@ export function Model(props: React.JSX.IntrinsicElements['group']) {
             ease: 'easeInOut',
           },
         }}>
+        {/* {keys && (
+          <pointLight
+            position={[0, -0.5, 0]}
+            color='#00ffff'
+            intensity={5}
+            distance={2}
+          />
+        )} */}
         <mesh
           castShadow
           receiveShadow
