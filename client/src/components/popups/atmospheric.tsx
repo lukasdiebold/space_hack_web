@@ -52,7 +52,7 @@ export default function AtmosphericRegulationCard() {
           </CardTitle>
         </div>
         <CardDescription className='text-indigo-200/70'>
-          Air quality, pressure, and temperature metrics
+        Solid oxide electrolysis/ Electrolysis of water ice
         </CardDescription>
       </CardHeader>
 

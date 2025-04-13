@@ -5,6 +5,9 @@ import Energy from '@/components/popups/energy';
 import Greenhouse from '@/components/popups/greenhouse';
 import Water from '@/components/popups/water';
 import Mass from '@/components/popups/spacex-mass-distribution';
+import Living from '@/components/popups/living-quarters';
+import Food from '@/components/popups/food-supply';
+import Nuclear from '@/components/popups/nuclear-table';
 
 import { NumberTicker } from '@/components/magicui/number-ticker';
 import { AuroraText } from '@/components/magicui/aurora-text';
@@ -52,6 +55,13 @@ export default function Home() {
           {/* Fifth page - Energy component on the right */}
           <div className='page h-screen'>
             <div className='container m-auto flex flex-col justify-start items-start h-[100vh]'>
+              <Nuclear />
+            </div>
+          </div>
+          
+          {/* Seventh page - Water component on the left */}
+          <div className='page h-screen'>
+            <div className='container m-auto flex flex-col justify-start items-start h-[100vh]'>
               <Energy />
             </div>
           </div>
@@ -64,7 +74,7 @@ export default function Home() {
           {/* Seventh page - Water component on the left */}
           <div className='page h-screen'>
             <div className='container m-auto flex flex-col justify-start items-start h-[100vh]'>
-              <Water />
+              <Atmospheric />
             </div>
           </div>
 
@@ -76,14 +86,14 @@ export default function Home() {
           {/* Ninth page - Greenhouse component on the right */}
           <div className='page h-screen'>
             <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'>
-              <Greenhouse />
+              <Water />
             </div>
           </div>
 
           {/* Tenth page - Atmospheric component on the left */}
           <div className='page h-screen'>
             <div className='container m-auto flex flex-col justify-end items-start h-[100vh]'>
-              <Atmospheric />
+              <Food />
             </div>
           </div>
 

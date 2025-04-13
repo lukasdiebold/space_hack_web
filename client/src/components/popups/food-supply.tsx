@@ -1,18 +1,23 @@
-import React from 'react';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog';
+'use client';
+import React, { useState } from 'react';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { 
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle
+} from "@/components/ui/alert-dialog";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 export default function FoodSupplyMonitor() {
+  const [infoDialogOpen, setInfoDialogOpen] = useState(false);
+
   // Current food metrics
   const foodInventory = 8600; // kg
   const dailyProduction = 42; // kg/day
@@ -41,42 +46,42 @@ export default function FoodSupplyMonitor() {
   ];
 
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button className="bg-amber-600 hover:bg-amber-700">Food Supply</Button>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-lg">
-        <DialogHeader>
-          <DialogTitle className="flex items-center">
-            <span className="h-3 w-3 rounded-full bg-amber-500 mr-2"></span>
-            Food Supply Status
-          </DialogTitle>
-          <DialogDescription>
+    <>
+      <Card className='w-full max-w-lg bg-white-300 rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-90 border border-gray-100'>
+        <CardHeader className='border-b border-white/10'>
+          <div className='flex items-center'>
+            <span className='h-3 w-3 rounded-full bg-amber-500 mr-2'></span>
+            <CardTitle className='text-indigo-100'>Food Supply Status</CardTitle>
+          </div>
+          <CardDescription 
+            className='text-indigo-200/70 cursor-pointer hover:text-indigo-200'
+            onClick={() => setInfoDialogOpen(true)}
+          >
             Food inventory, production, and consumption metrics
-          </DialogDescription>
-        </DialogHeader>
+          </CardDescription>
+        </CardHeader>
         
-        <div className="space-y-4 py-4">
+        <CardContent className="space-y-6 pt-6">
           {/* Overall Food Status */}
-          <Card className="bg-amber-50 border-amber-200">
+          <Card className="bg-amber-50/30 border-amber-200/30 backdrop-blur-sm">
             <CardContent className="pt-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <p className="text-sm text-gray-500">Total Food Supply</p>
-                  <p className="text-2xl font-bold">{foodInventory.toLocaleString()} kg</p>
-                  <p className="text-xs text-amber-700 mt-1">
+                  <p className="text-sm text-indigo-100/80">Total Food Supply</p>
+                  <p className="text-2xl font-bold text-indigo-100">{foodInventory.toLocaleString()} kg</p>
+                  <p className="text-xs text-amber-300 mt-1">
                     {daysRemaining > 100 ? 'Stable Supply' : 
                      daysRemaining > 30 ? 'Monitor Levels' : 'Supply Alert'}
                   </p>
                 </div>
                 <div>
-                  <div className="text-sm text-gray-500">Daily Balance</div>
+                  <div className="text-sm text-indigo-100/80">Daily Balance</div>
                   <div className="flex items-baseline mt-1">
-                    <span className="text-green-600 font-medium">+{dailyProduction} kg</span>
-                    <span className="mx-2 text-gray-400">/</span>
-                    <span className="text-red-600 font-medium">-{dailyConsumption} kg</span>
+                    <span className="text-green-400 font-medium">+{dailyProduction} kg</span>
+                    <span className="mx-2 text-indigo-100/60">/</span>
+                    <span className="text-red-400 font-medium">-{dailyConsumption} kg</span>
                   </div>
-                  <div className="mt-2 text-xs">
+                  <div className="mt-2 text-xs text-indigo-100/80">
                     <span className="font-medium">Est. Supply Duration:</span> {daysRemaining} days
                   </div>
                 </div>
@@ -85,105 +90,105 @@ export default function FoodSupplyMonitor() {
           </Card>
           
           {/* Food Inventory Chart */}
-          <Card>
-            <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium">Food Supply by Category</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ResponsiveContainer width="100%" height={200}>
-                <BarChart data={foodTypesData} margin={{ top: 5, right: 5, left: 0, bottom: 5 }}>
-                  <CartesianGrid strokeDasharray="3 3" opacity={0.3} />
-                  <XAxis dataKey="name" />
-                  <YAxis />
-                  <Tooltip />
-                  <Legend />
-                  <Bar dataKey="inventory" fill="#f59e0b" name="Inventory (kg)" />
-                  <Bar dataKey="production" fill="#84cc16" name="Daily Production (kg)" />
-                </BarChart>
-              </ResponsiveContainer>
-            </CardContent>
-          </Card>
+          <div className="backdrop-blur-md p-4 rounded-lg border border-white/20">
+            <h3 className="text-sm font-medium text-indigo-100 mb-4">Food Supply by Category</h3>
+            <ResponsiveContainer width="100%" height={200}>
+              <BarChart data={foodTypesData} margin={{ top: 5, right: 5, left: 0, bottom: 5 }}>
+                <CartesianGrid strokeDasharray="3 3" opacity={0.3} stroke="#fff" />
+                <XAxis dataKey="name" stroke="#fff" />
+                <YAxis stroke="#fff" />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="inventory" fill="#f59e0b" name="Inventory (kg)" />
+                <Bar dataKey="production" fill="#84cc16" name="Daily Production (kg)" />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
           
           {/* Nutrition and Consumption */}
           <div className="grid grid-cols-2 gap-4">
             {/* Nutrition Breakdown */}
-            <Card>
-              <CardHeader className="pb-2">
-                <CardTitle className="text-sm font-medium">Nutritional Profile</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
+            <div className="backdrop-blur-md p-4 rounded-lg border border-white/20">
+              <h3 className="text-sm font-medium text-indigo-100 mb-3">Nutritional Profile</h3>
+              <div className="space-y-3">
                 {nutritionData.map((item) => (
                   <div key={item.name} className="space-y-1">
-                    <div className="flex justify-between text-xs">
+                    <div className="flex justify-between text-xs text-indigo-100/80">
                       <span>{item.name}</span>
                       <span>{item.percent}%</span>
                     </div>
                     <Progress value={item.percent} className="h-1.5" />
                   </div>
                 ))}
-                <div className="text-xs text-center pt-2">
+                <div className="text-xs text-center pt-2 text-indigo-100/80">
                   <span className="font-medium">{caloriesPerPerson} kcal</span>
-                  <span className="text-gray-500"> daily per colonist</span>
+                  <span className="text-indigo-100/60"> daily per colonist</span>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
             
             {/* Waste and Efficiency */}
-            <Card>
-              <CardHeader className="pb-2">
-                <CardTitle className="text-sm font-medium">System Efficiency</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  <div className="space-y-1">
-                    <div className="flex justify-between text-xs">
-                      <span>Food Waste</span>
-                      <span>{foodWaste} kg/day</span>
-                    </div>
-                    <Progress value={(foodWaste/dailyProduction)*100} className="h-1.5" />
+            <div className="backdrop-blur-md p-4 rounded-lg border border-white/20">
+              <h3 className="text-sm font-medium text-indigo-100 mb-3">System Efficiency</h3>
+              <div className="space-y-3">
+                <div className="space-y-1">
+                  <div className="flex justify-between text-xs text-indigo-100/80">
+                    <span>Food Waste</span>
+                    <span>{foodWaste} kg/day</span>
                   </div>
-                  <div className="space-y-1">
-                    <div className="flex justify-between text-xs">
-                      <span>Storage Utilization</span>
-                      <span>72%</span>
-                    </div>
-                    <Progress value={72} className="h-1.5" />
-                  </div>
-                  <div className="space-y-1">
-                    <div className="flex justify-between text-xs">
-                      <span>Processing Efficiency</span>
-                      <span>91%</span>
-                    </div>
-                    <Progress value={91} className="h-1.5" />
-                  </div>
+                  <Progress value={(foodWaste/dailyProduction)*100} className="h-1.5" />
                 </div>
-              </CardContent>
-            </Card>
+                <div className="space-y-1">
+                  <div className="flex justify-between text-xs text-indigo-100/80">
+                    <span>Storage Utilization</span>
+                    <span>72%</span>
+                  </div>
+                  <Progress value={72} className="h-1.5" />
+                </div>
+                <div className="space-y-1">
+                  <div className="flex justify-between text-xs text-indigo-100/80">
+                    <span>Processing Efficiency</span>
+                    <span>91%</span>
+                  </div>
+                  <Progress value={91} className="h-1.5" />
+                </div>
+              </div>
+            </div>
           </div>
           
           {/* Status Indicators */}
           <div className="grid grid-cols-3 gap-2">
-            <Card className="bg-green-50 border-green-200">
-              <CardContent className="p-3 text-center">
-                <p className="text-xs text-gray-500">Production</p>
-                <p className="text-sm font-medium text-green-700">Normal</p>
-              </CardContent>
-            </Card>
-            <Card className="bg-green-50 border-green-200">
-              <CardContent className="p-3 text-center">
-                <p className="text-xs text-gray-500">Storage</p>
-                <p className="text-sm font-medium text-green-700">Optimal</p>
-              </CardContent>
-            </Card>
-            <Card className="bg-green-50 border-green-200">
-              <CardContent className="p-3 text-center">
-                <p className="text-xs text-gray-500">Processing</p>
-                <p className="text-sm font-medium text-green-700">Normal</p>
-              </CardContent>
-            </Card>
+            <div className="backdrop-blur-md p-3 rounded-lg border border-white/20 text-center">
+              <p className="text-xs text-indigo-100/70">Production</p>
+              <p className="text-sm font-medium text-green-400">Normal</p>
+            </div>
+            <div className="backdrop-blur-md p-3 rounded-lg border border-white/20 text-center">
+              <p className="text-xs text-indigo-100/70">Storage</p>
+              <p className="text-sm font-medium text-green-400">Optimal</p>
+            </div>
+            <div className="backdrop-blur-md p-3 rounded-lg border border-white/20 text-center">
+              <p className="text-xs text-indigo-100/70">Processing</p>
+              <p className="text-sm font-medium text-green-400">Normal</p>
+            </div>
           </div>
-        </div>
-      </DialogContent>
-    </Dialog>
+        </CardContent>
+      </Card>
+
+      <AlertDialog open={infoDialogOpen} onOpenChange={setInfoDialogOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Food Supply System Information</AlertDialogTitle>
+            <AlertDialogDescription>
+              <p className="mb-4">This dashboard provides comprehensive monitoring of the Mars habitat food system, tracking inventory levels, nutritional balance, and production efficiency.</p>
+              <p className="mb-4">The food production cycle incorporates hydroponic and aeroponic farming technologies, utilizing specialized Mars-adapted crop varieties that maximize resource efficiency while maintaining nutritional quality.</p>
+              <p>Regular monitoring of these metrics is essential for maintaining food security in the isolated Mars environment, where supply chains from Earth are limited by launch windows occurring only every 26 months.</p>
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Close</AlertDialogCancel>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+    </>
   );
 }
