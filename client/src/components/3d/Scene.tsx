@@ -109,7 +109,7 @@
 
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Stats, OrbitControls, Environment } from '@react-three/drei';
 
@@ -120,7 +120,9 @@ import Stars from './Stars';
 
 export default function Scene() {
   return (
-    <Canvas style={{ backgroundColor: 'black' }}>
+    <Canvas
+      style={{ backgroundColor: 'black' }}
+      camera={{ position: [0, 0, 3] }}>
       <OrbitControls />
       <Stats />
       <Environment preset='city' environmentIntensity={0.2} />

@@ -1,7 +1,13 @@
+'use client';
+
 import * as THREE from 'three';
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Center, useGLTF } from '@react-three/drei';
+import { useFrame } from '@react-three/fiber';
 import { GLTF } from 'three-stdlib';
+import { motion } from 'framer-motion-3d';
+import { Box3, Vector3 } from 'three';
+import { useObjectContext } from '@/context/ObjectContext';
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -64,13 +70,77 @@ type GLTFResult = GLTF & {
 };
 
 export function Model(props: React.JSX.IntrinsicElements['group']) {
+  const group = useRef<THREE.Group>(null);
+  const { objects, updateObject, animationProgress } = useObjectContext();
+  const rocketObject = objects.rocket || {
+    position: [0, 0, 0],
+    rotation: [Math.PI / 2, 0, 0],
+    scale: 0.0005,
+  };
+
   const { nodes, materials } = useGLTF(
     '/rocket/scene.gltf'
   ) as unknown as GLTFResult;
 
+  // Measure the rocket size after loading
+  useEffect(() => {
+    if (group.current) {
+      // Use a small timeout to ensure the model is fully loaded
+      const timeoutId = setTimeout(() => {
+        if (!group.current) return;
+        const boundingBox = new Box3().setFromObject(group.current);
+        const size = new Vector3();
+        boundingBox.getSize(size);
+
+        const center = new Vector3();
+        boundingBox.getCenter(center);
+
+        updateObject('rocket', {
+          size: { width: size.x, height: size.y, depth: size.z },
+          center: { x: center.x, y: center.y, z: center.z },
+        });
+
+        console.log('Rocket model measured:', size);
+      }, 100);
+
+      return () => clearTimeout(timeoutId);
+    }
+  }, [updateObject]);
+
+  // Handle rocket animations with useFrame if needed
+  useFrame(() => {
+    if (group.current && animationProgress.rocketThrust) {
+      // Add thruster animation or other effects here
+      // This runs every frame for smooth animations
+    }
+  });
+
   return (
-    <Center position={[0, 1.1, 0]} scale={0.0005}>
-      <group {...props} dispose={null}>
+    <Center
+      position={[
+        rocketObject.position[0],
+        rocketObject.position[1],
+        rocketObject.position[2],
+      ]}
+      scale={rocketObject.scale}
+      rotation={rocketObject.rotation}>
+      <motion.group
+        // @ts-ignore
+        ref={group}
+        {...props}
+        // Add rocket-specific Framer Motion animations
+        animate={{
+          // Example: Make the rocket hover slightly
+          y: animationProgress.rocketHover ? [-0.2, 0.2] : 0,
+        }}
+        transition={{
+          y: {
+            duration: 2,
+            repeat: Infinity,
+            repeatType: 'reverse',
+            ease: 'easeInOut',
+          },
+        }}>
         <mesh
           castShadow
           receiveShadow
@@ -331,8 +401,7 @@ export function Model(props: React.JSX.IntrinsicElements['group']) {
             ]
           }
         />
-      </group>
-      \
+      </motion.group>
     </Center>
   );
 }
