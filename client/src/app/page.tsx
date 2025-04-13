@@ -11,6 +11,11 @@ import { AuroraText } from '@/components/magicui/aurora-text';
 
 import Image from 'next/image';
 
+import { PulsatingButton } from '@/components/magicui/pulsating-button';
+import { HyperText } from '@/components/magicui/hyper-text';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+
 export default function Home() {
   return (
     <ObjectContextProvider>
@@ -116,7 +121,14 @@ export default function Home() {
           {/* Final page */}
           <div className='page h-screen'>
             <div className='container m-auto flex flex-col justify-center items-center h-[50vh]'>
-              {/* Your final page content is commented out in the original code */}
+              <h1 className='text-4xl font-bold tracking-tighter md:text-5xl lg:text-7xl text-white'>
+                <HyperText>The Seed</HyperText>
+              </h1>
+              <div className='flex flex-col items-center mt-4'>
+                <Button>
+                  <Link href='/dashboard'>Access Terminal</Link>
+                </Button>
+              </div>
             </div>
           </div>
         </div>
