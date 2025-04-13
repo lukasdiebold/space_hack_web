@@ -15,14 +15,18 @@ export default function Page() {
     (async () => {
           const remoteStream = new MediaStream();
           const pc = new RTCPeerConnection();
-    
+      
+          console.log("value changed");
           pc.ontrack = event => {
             event.streams[0].getTracks().forEach(track => {
+              console.log("adding track ");
               remoteStream.addTrack(track);
             })
           }
     
           videoRef.current.srcObject = remoteStream
+
+          console.log(videoRef.current.srcObject);
     
           const callDoc = doc(collection(appFirestore, "calls"), e);
           const offerCandidates = collection(callDoc, "offerCandidates");
