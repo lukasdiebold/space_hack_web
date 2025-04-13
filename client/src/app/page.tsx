@@ -4,6 +4,7 @@ import Atmospheric from '@/components/popups/atmospheric';
 import Energy from '@/components/popups/energy';
 import Greenhouse from '@/components/popups/greenhouse';
 import Water from '@/components/popups/water';
+import Mass from '@/components/popups/spacex-mass-distribution';
 
 import { NumberTicker } from '@/components/magicui/number-ticker';
 import { AuroraText } from '@/components/magicui/aurora-text';
@@ -27,13 +28,13 @@ export default function Home() {
           </div>
           <div className='page h-screen '>
             <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'>
-              <Atmospheric />
+              <Mass />
             </div>
           </div>
           <div className='page h-screen'>
             <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'>
               <p className='text-white  lg:w-2xl px-2.5 md:text-[1rem] lg:text-xl '>
-                AAA
+                <Atmospheric />
               </p>
             </div>
           </div>
