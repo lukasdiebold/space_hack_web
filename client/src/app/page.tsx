@@ -120,6 +120,12 @@
 
 import SceneWrap from '@/components/3d/Wrapper';
 import { ObjectContextProvider } from '@/context/ObjectContext';
+import Atmospheric from '@/components/popups/atmospheric';
+import Energy from '@/components/popups/energy';
+import Greenhouse from '@/components/popups/greenhouse';
+import Water from '@/components/popups/water';
+
+import { NumberTicker } from '@/components/magicui/number-ticker';
 
 export default function Home() {
   return (
@@ -132,19 +138,24 @@ export default function Home() {
 
         <div className='up z-10  w-full absolute overflow-hidden hidden md:inline-block'>
           <div className='page h-screen '>
-            <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'>
-              <p className='text-white lg:w-2xl px-2.5 text-[1rem] lg:text-2xl mb-20 '>
-                The Nissan Silvia (Japanese: 日産・シルビア, Hepburn: Nissan
-                Shirubia) is the series of small sports cars produced by Nissan.
-                Versions of the Silvia have been marketed as the 200SX or 240SX
-                for export, with some export versions being sold under the
-                Datsun brand.
-              </p>
+            <div className='container m-auto flex flex-col justify-center items-end h-[100vh]'>
+              {/* <p className='text-white lg:w-2xl px-2.5 text-[1rem] lg:text-2xl mb-20 '> */}
+              <h1 className='text-8xl text-white font-bold '>The Seed</h1>
+              {/* </p> */}
+              {/* <Atmospheric /> */}
+              {/* <NumberTicker
+                value={10}
+                delay={0}
+                direction='down'
+                className='whitespace-pre-wrap text-8xl font-medium tracking-tighter text-white'
+              /> */}
             </div>
           </div>
           <div className='page h-screen '>
             <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'>
-              <p className='text-white text-center text-[1rem] lg:text-2xl mb-20 '>
+              <Atmospheric />
+
+              {/* <p className='text-white text-center text-[1rem] lg:text-2xl mb-20 '>
                 The Nissan Silvia S15 was the final and most refined version of
                 the Silvia lineup, produced from 1999 to 2002. It was powered by
                 the SR20DET , a 2.0L turbocharged inline-four engine, producing
@@ -155,7 +166,7 @@ export default function Home() {
                 165 hp . Thanks to its lightweight chassis, rear-wheel drive
                 layout, and tunable engine, the S15 remains a top choice for
                 drifting and performance builds.
-              </p>
+              </p> */}
             </div>
           </div>
           <div className='page h-screen'></div>
@@ -179,12 +190,12 @@ export default function Home() {
           <div className='page h-screen '></div>
           <div className='page h-screen '>
             <div className='container m-auto flex flex-col justify-end items-center h-[100vh]'>
-              <p className='text-white  text-[11 em] lg:text-2xl  mb-10'>
+              {/* <p className='text-white  text-[11 em] lg:text-2xl  mb-10'>
                 This Website Made by{' '}
                 <a href='https://www.wanttoknow.me/' className='underline '>
                   Farid Mustafayev
                 </a>
-              </p>
+              </p> */}
             </div>
           </div>
         </div>
