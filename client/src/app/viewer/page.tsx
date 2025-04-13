@@ -26,7 +26,7 @@ export default function ViewerPage() {
       pc.onicecandidate = event => {
         if (event.candidate) {
           addDoc(answerCandidates, event.candidate.toJSON())
-        }
+        } 
       }
 
       const callData = (await getDoc(callDoc)).data();
