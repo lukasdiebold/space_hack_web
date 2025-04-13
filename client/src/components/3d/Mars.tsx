@@ -315,9 +315,9 @@ export function Model(props: React.JSX.IntrinsicElements['group']) {
         //   position: [size.x, 0, 0],
         // });
 
-        console.log('Mars model measured:', size);
+        // console.log('Mars model measured:', size);
 
-        console.log('All object', objects);
+        // console.log('All object', objects);
       }, 300);
 
       return () => clearTimeout(timeoutId);
