@@ -25,15 +25,18 @@ import { CardHeader } from '@/components/ui/card';
 import { CardTitle } from '@/components/ui/card';
 import { CardDescription } from '@/components/ui/card';
 
+import { ScrollProgress } from '@/components/magicui/scroll-progress';
+
 import image from "./../../public/frame.png"
 
 export default function Home() {
   return (
     <ObjectContextProvider>
+      <ScrollProgress />
       <div className='h-[1800vh] z-[-100]'>
-          <div className='sceneWrap fixed z-[-10] top-0 h-screen w-full'>
-            <SceneWrap />
-          </div>
+        <div className='sceneWrap fixed z-[-10] top-0 h-screen w-full'>
+          <SceneWrap />
+        </div>
 
         <div className='up z-10 w-full md:inline-block'>
           {/* First page - Aurora Text centered in the middle */}
@@ -170,9 +173,38 @@ export default function Home() {
           <div className='page h-screen'>
             <div className='container m-auto flex flex-col justify-end h-[100vh]'></div>
           </div>
+
+          {/* <div className='page h-screen'>
+            <div className='container m-auto flex flex-col justify-center items-center h-[50vh]'>
+              <Button>
+                <Link href='/dashboard'>Access Terminal</Link>
+              </Button>
+            </div>
+          </div> */}
           <div className='page h-screen'>
-            <div className='container m-auto flex flex-col justify-end h-[100vh]'></div>
+            <div className='container m-auto flex flex-col justify-center items-center h-[50vh]'>
+              <Card className='w-full max-w-lg bg-white-300 rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-90 border border-gray-100'>
+                <CardHeader className='border-b border-white/10 flex justify-center text-center'>
+                  <div className='flex items-center justify-center'>
+                    {/* <span className='h-3 w-3 rounded-full bg-green-600 mr-2'></span> */}
+                    <CardTitle className='text-indigo-100'>
+                      Our resources
+                    </CardTitle>
+                  </div>
+                  {/* <CardDescription className='text-indigo-200/70'>
+    </CardDescription> */}
+                </CardHeader>
+                <CardContent className='space-y-6 pt-6 flex justify-center items-center'>
+                  <Button className='mx-auto'>
+                    <Link href='https://docs.google.com/document/d/1BLrFvee2hIgxi1khPur8gpsBbnMxCRPGLkHmKNqLlc4/edit?usp=sharing'>
+                      PDF
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
           </div>
+
           <div className='page h-screen'>
             <div className='container m-auto flex flex-col justify-end h-[100vh]'></div>
           </div>
