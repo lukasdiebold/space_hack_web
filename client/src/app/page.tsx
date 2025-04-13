@@ -18,6 +18,12 @@ import { PulsatingButton } from '@/components/magicui/pulsating-button';
 import { HyperText } from '@/components/magicui/hyper-text';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { Card } from '@/components/ui/card';
+
+import { CardContent } from '@/components/ui/card';
+import { CardHeader } from '@/components/ui/card';
+import { CardTitle } from '@/components/ui/card';
+import { CardDescription } from '@/components/ui/card';
 
 export default function Home() {
   return (
@@ -63,22 +69,43 @@ export default function Home() {
               <Nuclear />
             </div>
           </div>
-          
+
           {/* Seventh page - Water component on the left */}
           <div className='page h-screen'>
-            <div className='container m-auto flex flex-col justify-start items-start h-[100vh]'>
-              <Energy />
+            <div className='container m-auto flex flex-col justify-center items-end h-[100vh]'>
+              <Card className='w-full max-w-lg bg-white-300 rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-90 border border-gray-100'>
+                <CardHeader className='border-b border-white/10'>
+                  <div className='flex items-center'>
+                    {/* <span className='h-3 w-3 rounded-full bg-green-600 mr-2'></span> */}
+                    <CardTitle className='text-indigo-100'>
+                      Colony Dashboard
+                    </CardTitle>
+                  </div>
+                  <CardDescription className='text-indigo-200/70'>
+                    To manage efficiently manage, maintain and grow the
+                    different components of a Mars colony we developed a
+                    dashboard that provides an overview over the state of all
+                    systems relevant to the inhabitant&apos;s survival. Key
+                    metrics such as energy consumption and production, current
+                    irradiation values and greenhouse temperature can me
+                    instantly monitored and controlled. This allows for fast
+                    response in case of hazardous situations and malfunctions.
+                  </CardDescription>
+                </CardHeader>
+              </Card>
             </div>
           </div>
 
           {/* Spacer page */}
           <div className='page h-screen'>
-            <div className='container m-auto flex flex-col justify-end h-[100vh]'></div>
+            <div className='container m-auto flex flex-col justify-center items-start h-[100vh]'>
+              <Energy />
+            </div>
           </div>
 
           {/* Seventh page - Water component on the left */}
           <div className='page h-screen'>
-            <div className='container m-auto flex flex-col justify-start items-start h-[100vh]'>
+            <div className='container m-auto flex flex-col justify-center items-end h-[100vh]'>
               <Atmospheric />
             </div>
           </div>
@@ -90,21 +117,43 @@ export default function Home() {
 
           {/* Ninth page - Greenhouse component on the right */}
           <div className='page h-screen'>
-            <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'>
-              <Water />
+            <div className='container m-auto flex flex-col justify-start items-start h-[100vh]'>
+              <Card className='w-full max-w-lg bg-white-300 rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-90 border border-gray-100'>
+                <CardHeader className='border-b border-white/10'>
+                  <div className='flex items-center'>
+                    {/* <span className='h-3 w-3 rounded-full bg-green-600 mr-2'></span> */}
+                    <CardTitle className='text-indigo-100'>
+                      Landing Position and water availability
+                    </CardTitle>
+                  </div>
+                  <CardDescription className='text-indigo-200/70'>
+                    The Landing position based on the stranded
+                    Aristronaut&apos;s position will determine the water
+                    availability and temperature around the settlement. If
+                    stranded at one of Mars&apos; poles, the Aristraunaut will
+                    be able to take advantage of abundant water ice. Accessing
+                    this water is essential for both life support and potential
+                    propellant production. Several technologies can be employed
+                    for water ice extraction.
+                  </CardDescription>
+                </CardHeader>
+              </Card>
             </div>
           </div>
 
           {/* Tenth page - Atmospheric component on the left */}
           <div className='page h-screen'>
-            <div className='container m-auto flex flex-col justify-end items-start h-[100vh]'>
-              <Food />
-            </div>
+            <div className='container m-auto flex flex-col justify-end items-start h-[100vh]'></div>
           </div>
 
           {/* The remaining spacer pages */}
           <div className='page h-screen'>
-            <div className='container m-auto flex flex-col justify-end h-[100vh]'></div>
+            <div className='container m-auto flex flex-col justify-center items-end h-[100vh]'></div>
+          </div>
+          <div className='page h-screen'>
+            <div className='container m-auto flex flex-col justify-end items-start h-[100vh]'>
+              <Water />
+            </div>
           </div>
           <div className='page h-screen'>
             <div className='container m-auto flex flex-col justify-end h-[100vh]'></div>
@@ -113,10 +162,9 @@ export default function Home() {
             <div className='container m-auto flex flex-col justify-end h-[100vh]'></div>
           </div>
           <div className='page h-screen'>
-            <div className='container m-auto flex flex-col justify-end h-[100vh]'></div>
-          </div>
-          <div className='page h-screen'>
-            <div className='container m-auto flex flex-col justify-end h-[100vh]'></div>
+            <div className='container m-auto flex flex-col justify-center items-end h-[100vh]'>
+              <Food />
+            </div>
           </div>
           <div className='page h-screen'>
             <div className='container m-auto flex flex-col justify-end h-[100vh]'></div>
