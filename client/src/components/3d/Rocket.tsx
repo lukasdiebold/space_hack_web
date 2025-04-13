@@ -194,7 +194,7 @@ export function Model(props: React.JSX.IntrinsicElements['group']) {
 
       return () => clearTimeout(timeoutId);
     }
-  }, [updateObject]);
+  }, [updateObject, group, objects]);
 
   // Handle rocket movement based on keyboard input
   // useFrame((state, delta) => {

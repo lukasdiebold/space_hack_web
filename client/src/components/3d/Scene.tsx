@@ -1,6 +1,6 @@
 'use client';
 import { useFrame, useThree } from '@react-three/fiber';
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import {
   Environment,
   OrbitControls,
@@ -12,6 +12,7 @@ import { Model as Mars } from '@/components/3d/Mars';
 import { useScroll, useTransform } from 'motion/react';
 import * as THREE from 'three';
 import Stars from './Stars';
+import { useObjectContext } from '@/context/ObjectContext';
 
 const Scene: React.FC = () => {
   // Camera position animations with more complex movements
@@ -19,48 +20,62 @@ const Scene: React.FC = () => {
   const { camera } = useThree();
   const { scrollYProgress } = useScroll();
 
+  // const { objects, updateObject, animationProgress } = useObjectContext();
+
+  const interpolate = (n: number): number[] =>
+    Array.from({ length: n + 1 }, (_, i) => i / n);
+
   const px = useTransform(
     scrollYProgress,
-    [0, 0.15, 0.25, 0.35, 0.5, 0.65, 0.75, 0.85, 1],
-    [3, 6, -5, -8, 0, 2, 4, -3, 0]
+    interpolate(17),
+    [3, 6, -5, -8, 0, 2, 4, -3, 0, 3, 6, -5, -8, 0, 2, 4, -3, 0]
   );
 
   const py = useTransform(
     scrollYProgress,
-    [0, 0.15, 0.25, 0.35, 0.5, 0.65, 0.75, 0.85, 1],
-    [5, 8, 5, 0, -5, -3, 6, 7, 2]
+    interpolate(17),
+    [5, 8, 5, 0, -5, -3, 6, 7, 0, 5, 8, 5, 0, -5, -3, 6, 7, 0]
   );
 
   const pz = useTransform(
     scrollYProgress,
-    [0, 0.15, 0.25, 0.35, 0.5, 0.65, 0.75, 0.85, 1],
-    [0, 2, 0, -3, 0, 4, 2, 1, 0]
+    interpolate(17),
+    [0, 2, 0, -3, 0, 4, 2, 1, 0, 0, 2, 0, -3, 0, 4, 2, 1, 0]
   );
 
   // Camera rotation/lookAt animations
   const Lookx = useTransform(
     scrollYProgress,
-    [0, 0.15, 0.25, 0.35, 0.5, 0.65, 0.75, 0.85, 1],
-    [0, 0.5, 0, -0.5, -0.8, 0.3, 0, -0.4, 0]
+    interpolate(17),
+    [
+      0, 0.5, 0, -0.5, -0.8, 0.3, 0, -0.4, 0, 0, 0.5, 0, -0.5, -0.8, 0.3, 0,
+      -0.4, 0,
+    ]
   );
 
   const Looky = useTransform(
     scrollYProgress,
-    [0, 0.15, 0.25, 0.35, 0.5, 0.65, 0.75, 0.85, 1],
-    [0, 0.2, 0.5, 0, 0, -0.5, 0.3, 0.7, -2]
+    interpolate(17),
+    [0, 0.2, 0.5, 0, 0, -0.5, 0.3, 0.7, 0, 0, 0.2, 0.5, 0, 0, -0.5, 0.3, 0.7, 0]
   );
 
   const Lookz = useTransform(
     scrollYProgress,
-    [0, 0.15, 0.25, 0.35, 0.5, 0.65, 0.75, 0.85, 1],
-    [0, 0, 0.3, -0.2, 0, 0.4, 0.1, -0.3, 0]
+    interpolate(17),
+    [
+      0, 0, 0.3, -0.2, 0, 0.4, 0.1, -0.3, 0, 0, 0, 0.3, -0.2, 0, 0.4, 0.1, -0.3,
+      0,
+    ]
   );
 
   // Optional: Add camera roll for even more dynamic effect
   const cameraRoll = useTransform(
     scrollYProgress,
-    [0, 0.15, 0.25, 0.35, 0.5, 0.65, 0.75, 0.85, 1],
-    [0, 0.1, 0, -0.2, 0.15, 0, -0.1, 0.05, 0]
+    interpolate(17),
+    [
+      0, 0.1, 0, -0.2, 0.15, 0, -0.1, 0.05, 0, 0, 0.1, 0, -0.2, 0.15, 0, -0.1,
+      0.05, 0,
+    ]
   );
 
   useFrame(() => {
@@ -82,10 +97,34 @@ const Scene: React.FC = () => {
     // Apply roll rotation (optional, for more dramatic effect)
     camera.rotation.z = roll;
   });
+
+  const [showMars, setShowMars] = useState(false);
+
+  useEffect(() => {
+    // Set up a listener for the scrollYProgress changes
+    const unsubscribe = scrollYProgress.onChange((value) => {
+      // Update state based on scroll position
+      if (value > 0.5) {
+        setShowMars(true);
+        // updateObject('mars', {
+        //   position: [0, 0, 0],
+        // });
+      } else {
+        setShowMars(false);
+        // updateObject('mars', {
+        //   position: [0, -2, 0],
+        // });
+      }
+    });
+
+    // Clean up the listener when component unmounts
+    return () => unsubscribe();
+  }, [scrollYProgress]);
+
   return (
     // <Physics>
     <>
-      <axesHelper args={[100]} />
+      {/* <axesHelper args={[100]} /> */}
       <PerspectiveCamera makeDefault fov={window.innerWidth < 768 ? 40 : 20} />
       <Environment preset='city' environmentIntensity={0.2} />
 
@@ -108,21 +147,13 @@ const Scene: React.FC = () => {
         shadow-camera-far={50}
       />
 
-      {/* Ground */}
-      {/* <RigidBody type='fixed'>
-        <mesh position={[0, -1, 0]} receiveShadow>
-          <cylinderGeometry args={[100, 100, 1]} />
-          <meshStandardMaterial color='#000000' />
-        </mesh>
-      </RigidBody> */}
-
-      {/* Model */}
-      {/* <RigidBody colliders='trimesh'> */}
-      <Model castShadow receiveShadow />
-      <Mars castShadow receiveShadow />
+      {showMars ? (
+        <Mars castShadow receiveShadow />
+      ) : (
+        <Model castShadow receiveShadow />
+      )}
       <Stars />
-      {/* </RigidBody> */}
-      {/* </Physics> */}
+      <ambientLight intensity={0.1} />
     </>
   );
 };
