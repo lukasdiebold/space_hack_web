@@ -28,13 +28,12 @@ import { CardDescription } from '@/components/ui/card';
 export default function Home() {
   return (
     <ObjectContextProvider>
-      <div className='h-[1800vh] relative z-[-100]'>
-        <div className='fixed z-[-25] top-0 h-screen w-full bg-transparent' />
-        <div className='sceneWrap fixed z-[-10] top-0 h-screen w-full'>
-          <SceneWrap />
-        </div>
+      <div className='h-[1800vh] z-[-100]'>
+          <div className='sceneWrap fixed z-[-10] top-0 h-screen w-full'>
+            <SceneWrap />
+          </div>
 
-        <div className='up z-10 w-full absolute overflow-hidden hidden md:inline-block'>
+        <div className='up z-10 w-full md:inline-block'>
           {/* First page - Aurora Text centered in the middle */}
           <div className='page h-screen min-h-screen'>
             <div className='container m-auto flex flex-col justify-center items-center h-[100vh]'>

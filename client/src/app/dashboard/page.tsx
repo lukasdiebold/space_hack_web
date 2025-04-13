@@ -17,6 +17,7 @@ export default function Page() {
     robotId: string,
     task_name: string
   }[]>([]);
+  const api = "https://aris.innovation-sg.ch"
 
   const valueChanged = (e: string) => {
     setSelectedAgentIndex(parseInt(e));
@@ -35,7 +36,7 @@ export default function Page() {
           videoRef.current.srcObject = remoteStream
 
           console.log(videoRef.current.srcObject);
-    
+
           const callDoc = doc(collection(appFirestore, "calls"), e);
           const offerCandidates = collection(callDoc, "offerCandidates");
           const answerCandidates = collection(callDoc, "answerCandidates");
@@ -73,7 +74,7 @@ export default function Page() {
 
   useEffect(() => {
     (async () => {
-      const robots = await fetch("http://168.119.174.209:8000/v1/robots");
+      const robots = await fetch(`${api}/v1/robots`);
       const robotList = await robots.json();
       console.log(robotList);
       setAgents(robotList);
@@ -87,7 +88,7 @@ export default function Page() {
     const prompt = inputRef.current.value;
     inputRef.current.value = "";
     const robotId = agents[selectedAgentIndex].robotId;
-    fetch(`http://168.119.174.209:8000/v1/robots/${robotId}/task`, {
+    fetch(`${api}/v1/robots/${robotId}/task`, {
       method: "POST",
       body: JSON.stringify({
         robot_id: robotId,
@@ -119,6 +120,8 @@ export default function Page() {
             <SelectValue placeholder="Agent" />
           </SelectTrigger>
           <SelectContent className="bg-black text-white">
+            <SelectItem value="1">1</SelectItem>
+            <SelectItem value="2">2</SelectItem>
             {
               agents.map((agent, idx) => {
                 return <SelectItem key={idx} value={idx.toString()}>Agent {agent.robotId}</SelectItem>
