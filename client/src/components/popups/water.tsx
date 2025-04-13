@@ -70,8 +70,9 @@ export default function GreenhouseMonitor() {
           </div>
           <CardDescription
             className='text-indigo-200/70 cursor-pointer hover:text-indigo-200'
-            onClick={() => setInfoDialogOpen(true)}>
-            Plant growth, gas exchange, and environmental conditions
+            onClick={() => setInfoDialogOpen(true)}
+          >
+            Water ice near the Martian poles
           </CardDescription>
         </CardHeader>
 
