@@ -1,0 +1,11 @@
+Model Information:
+* title:	SpaceX Starship Ship S25 & Booster 9
+* source:	https://sketchfab.com/3d-models/spacex-starship-ship-s25-booster-9-f76be07d358f454b8396d4e8f1cc5329
+* author:	clarence365 (https://sketchfab.com/clarence365)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "SpaceX Starship Ship S25 & Booster 9" (https://sketchfab.com/3d-models/spacex-starship-ship-s25-booster-9-f76be07d358f454b8396d4e8f1cc5329) by clarence365 (https://sketchfab.com/clarence365) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
