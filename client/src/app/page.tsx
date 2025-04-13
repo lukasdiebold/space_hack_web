@@ -1,118 +1,195 @@
-import Scene from '@/components/3d/Scene';
-
+import SceneWrap from '@/components/3d/Wrapper';
 import { ObjectContextProvider } from '@/context/ObjectContext';
+import Atmospheric from '@/components/popups/atmospheric';
+import Energy from '@/components/popups/energy';
+import Greenhouse from '@/components/popups/greenhouse';
+import Water from '@/components/popups/water';
+import Mass from '@/components/popups/spacex-mass-distribution';
+import Living from '@/components/popups/living-quarters';
+import Food from '@/components/popups/food-supply';
+import Nuclear from '@/components/popups/nuclear-table';
+
+import { NumberTicker } from '@/components/magicui/number-ticker';
+import { AuroraText } from '@/components/magicui/aurora-text';
+
+import Image from 'next/image';
+
+import { PulsatingButton } from '@/components/magicui/pulsating-button';
+import { HyperText } from '@/components/magicui/hyper-text';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import { Card } from '@/components/ui/card';
+
+import { CardContent } from '@/components/ui/card';
+import { CardHeader } from '@/components/ui/card';
+import { CardTitle } from '@/components/ui/card';
+import { CardDescription } from '@/components/ui/card';
 
 export default function Home() {
   return (
     <ObjectContextProvider>
-      <div className='h-[100vh] relative'>
-        {/* // <div className='h-[800vh] relative z-[-100] '>
-    //   <div className='fixed z-[-25] top-0 h-screen w-full bg-[radial-gradient(circle,_rgba(200,0,0,1)_0%,_rgba(0,0,0,1)_100%)]' />
-    //   <div className='sceneWrap fixed z-[-10] top-0 h-screen w-full '> */}
-        <Scene />
-        {/* </div> */}
+      <div className='h-[1800vh] relative z-[-100]'>
+        <div className='fixed z-[-25] top-0 h-screen w-full bg-transparent' />
+        <div className='sceneWrap fixed z-[-10] top-0 h-screen w-full'>
+          <SceneWrap />
+        </div>
 
-        {/* <div className='up z-10  w-full absolute overflow-hidden hidden md:inline-block'>
-        <div className='page h-screen '>
-          <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'>
-            <p className='text-white lg:w-2xl px-2.5 text-[1rem] lg:text-2xl mb-20 '>
-              The Nissan Silvia (Japanese: 日産・シルビア, Hepburn: Nissan
-              Shirubia) is the series of small sports cars produced by Nissan.
-              Versions of the Silvia have been marketed as the 200SX or 240SX
-              for export, with some export versions being sold under the Datsun
-              brand.
-            </p>
+        <div className='up z-10 w-full absolute overflow-hidden hidden md:inline-block'>
+          {/* First page - Aurora Text centered in the middle */}
+          <div className='page h-screen min-h-screen'>
+            <div className='container m-auto flex flex-col justify-center items-center h-[100vh]'>
+              <h1 className='text-4xl font-bold tracking-tighter md:text-5xl lg:text-7xl text-white'>
+                The <AuroraText>Seed</AuroraText>
+              </h1>
+            </div>
+          </div>
+
+          {/* Second page - Mass component on the right */}
+          <div className='page h-screen'>
+            <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'></div>
+          </div>
+
+          {/* Spacer page */}
+          <div className='page h-screen'>
+            <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'>
+              <Mass />
+            </div>
+          </div>
+
+          {/* Fourth page - Component on the left */}
+          <div className='page h-screen'>
+            <div className='container m-auto flex flex-col justify-end items-start h-[100vh]'>
+              {/* You can place any component here if needed */}
+            </div>
+          </div>
+
+          {/* Fifth page - Energy component on the right */}
+          <div className='page h-screen'>
+            <div className='container m-auto flex flex-col justify-start items-start h-[100vh]'>
+              <Nuclear />
+            </div>
+          </div>
+
+          {/* Seventh page - Water component on the left */}
+          <div className='page h-screen'>
+            <div className='container m-auto flex flex-col justify-center items-end h-[100vh]'>
+              <Card className='w-full max-w-lg bg-white-300 rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-90 border border-gray-100'>
+                <CardHeader className='border-b border-white/10'>
+                  <div className='flex items-center'>
+                    {/* <span className='h-3 w-3 rounded-full bg-green-600 mr-2'></span> */}
+                    <CardTitle className='text-indigo-100'>
+                      Colony Dashboard
+                    </CardTitle>
+                  </div>
+                  <CardDescription className='text-indigo-200/70'>
+                    To manage efficiently manage, maintain and grow the
+                    different components of a Mars colony we developed a
+                    dashboard that provides an overview over the state of all
+                    systems relevant to the inhabitant&apos;s survival. Key
+                    metrics such as energy consumption and production, current
+                    irradiation values and greenhouse temperature can me
+                    instantly monitored and controlled. This allows for fast
+                    response in case of hazardous situations and malfunctions.
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            </div>
+          </div>
+
+          {/* Spacer page */}
+          <div className='page h-screen'>
+            <div className='container m-auto flex flex-col justify-center items-start h-[100vh]'>
+              <Energy />
+            </div>
+          </div>
+
+          {/* Seventh page - Water component on the left */}
+          <div className='page h-screen'>
+            <div className='container m-auto flex flex-col justify-center items-end h-[100vh]'>
+              <Atmospheric />
+            </div>
+          </div>
+
+          {/* Spacer page */}
+          <div className='page h-screen'>
+            <div className='container m-auto flex flex-col justify-end h-[100vh]'></div>
+          </div>
+
+          {/* Ninth page - Greenhouse component on the right */}
+          <div className='page h-screen'>
+            <div className='container m-auto flex flex-col justify-start items-start h-[100vh]'>
+              <Card className='w-full max-w-lg bg-white-300 rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-90 border border-gray-100'>
+                <CardHeader className='border-b border-white/10'>
+                  <div className='flex items-center'>
+                    {/* <span className='h-3 w-3 rounded-full bg-green-600 mr-2'></span> */}
+                    <CardTitle className='text-indigo-100'>
+                      Landing Position and water availability
+                    </CardTitle>
+                  </div>
+                  <CardDescription className='text-indigo-200/70'>
+                    The Landing position based on the stranded
+                    Aristronaut&apos;s position will determine the water
+                    availability and temperature around the settlement. If
+                    stranded at one of Mars&apos; poles, the Aristraunaut will
+                    be able to take advantage of abundant water ice. Accessing
+                    this water is essential for both life support and potential
+                    propellant production. Several technologies can be employed
+                    for water ice extraction.
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            </div>
+          </div>
+
+          {/* Tenth page - Atmospheric component on the left */}
+          <div className='page h-screen'>
+            <div className='container m-auto flex flex-col justify-end items-start h-[100vh]'></div>
+          </div>
+
+          {/* The remaining spacer pages */}
+          <div className='page h-screen'>
+            <div className='container m-auto flex flex-col justify-center items-end h-[100vh]'></div>
+          </div>
+          <div className='page h-screen'>
+            <div className='container m-auto flex flex-col justify-end items-start h-[100vh]'>
+              <Water />
+            </div>
+          </div>
+          <div className='page h-screen'>
+            <div className='container m-auto flex flex-col justify-end h-[100vh]'></div>
+          </div>
+          <div className='page h-screen'>
+            <div className='container m-auto flex flex-col justify-end h-[100vh]'></div>
+          </div>
+          <div className='page h-screen'>
+            <div className='container m-auto flex flex-col justify-center items-end h-[100vh]'>
+              <Food />
+            </div>
+          </div>
+          <div className='page h-screen'>
+            <div className='container m-auto flex flex-col justify-end h-[100vh]'></div>
+          </div>
+          <div className='page h-screen'>
+            <div className='container m-auto flex flex-col justify-end h-[100vh]'></div>
+          </div>
+          <div className='page h-screen'>
+            <div className='container m-auto flex flex-col justify-end h-[100vh]'></div>
+          </div>
+
+          {/* Final page */}
+          <div className='page h-screen'>
+            <div className='container m-auto flex flex-col justify-center items-center h-[50vh]'>
+              <h1 className='text-4xl font-bold tracking-tighter md:text-5xl lg:text-7xl text-white'>
+                <HyperText>The Seed</HyperText>
+              </h1>
+              <div className='flex flex-col items-center mt-4'>
+                <Button>
+                  <Link href='/dashboard'>Access Terminal</Link>
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
-        <div className='page h-screen '>
-          <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'>
-            <p className='text-white text-center text-[1rem] lg:text-2xl mb-20 '>
-              The Nissan Silvia S15 was the final and most refined version of
-              the Silvia lineup, produced from 1999 to 2002. It was powered by
-              the SR20DET , a 2.0L turbocharged inline-four engine, producing
-              around 250 hp in the Spec-R model. This version featured a
-              ball-bearing turbo , improved cooling, and a 6-speed manual
-              transmission , making it a favorite among enthusiasts. The
-              non-turbo SR20DE version was also available, delivering around 165
-              hp . Thanks to its lightweight chassis, rear-wheel drive layout,
-              and tunable engine, the S15 remains a top choice for drifting and
-              performance builds.
-            </p>
-          </div>
-        </div>
-        <div className='page h-screen'></div>
-        <div className='page h-screen '>
-          <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'>
-            <p className='text-white  lg:w-2xl px-2.5 md:text-[1rem] lg:text-xl '>
-              The Nissan Silvia S15 is a true Japanese legend, known for its
-              balance, agility, and drifting prowess. With a lightweight
-              chassis, turbocharged SR20DET engine, and rear-wheel-drive layout,
-              it became a favorite in street racing and motorsports. The S15
-              dominated touge battles and drift competitions, cementing its
-              status in JDM culture. Its sleek design and performance keep it
-              highly sought after, and with the US import ban nearing its end,
-              its legacy as a top-tier JDM icon continues to grow.
-            </p>
-          </div>
-        </div>
-        <div className='page h-screen '></div>
-        <div className='page h-screen '></div>
-        <div className='page h-screen '></div>
-        <div className='page h-screen '>
-          <div className='container m-auto flex flex-col justify-end items-center h-[100vh]'>
-            <p className='text-white  text-[11 em] lg:text-2xl  mb-10'>
-              This Website Made by{' '}
-              <a href='https://www.wanttoknow.me/' className='underline '>
-                Farid Mustafayev
-              </a>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div className='down z-[-20]  w-full  absolute  overflow-hidden '>
-        <div className='page h-screen '>
-          <div className='container m-auto flex flex-col justify-center h-[50vh]'>
-            <h4 className='lg:text-[5rem] text-[3rem] text-white font-bold pl-3'>
-              Nissan
-            </h4>
-            <h1 className='text-[6rem] pl-3 lg:text-[18rem] leading-10 mb-10 lg:mb-0 lg:leading-44 text-white font-bold '>
-              SILVIA
-            </h1>
-          </div>
-        </div>
-        <div className='page h-screen'>
-          <div className='container m-auto flex flex-col justify-center items-center h-[50vh]'>
-            <h1 className='text-[6rem] lg:text-[18rem] leading-10 mb-10 lg:mb-0 lg:leading-44 text-white font-bold '>
-              LS V8
-            </h1>
-            <h4 className='text-[5rem] text-white font-bold'>engine</h4>
-          </div>
-        </div>
-        <div className='page h-screen '></div>
-        <div className='page h-screen '>
-          <div className='container m-auto flex flex-col justify-center items-end h-[50vh]'>
-            <h4 className=' xl:text-[5rem] text-[2rem]  text-white font-bold mt-80'>
-              Japanese
-            </h4>
-            <h1 className='text-[6rem]  leading-none xl:text-[18rem]  mb-10 xl:mb-0 xl:leading-44 text-white font-bold '>
-              Legend
-            </h1>
-          </div>
-        </div>
-        <div className='page h-screen '></div>
-        <div className='page h-screen '></div>
-        <div className='page h-screen '></div>
-        <div className='page h-screen '>
-          <div className='container m-auto flex flex-col justify-center items-center h-[50vh]'>
-            <h4 className='text-[1rem] lg:text-[4rem] text-white font-bold'>
-              The Nissan Silvia isn’t just a car
-            </h4>
-            <h1 className='text-[1rem] lg:text-[3rem] leading-none text-center lg:leading-20 text-white font-bold  mb-20'>
-              "it’s a statement of style, speed, and pure driving passion."
-            </h1>
-          </div>
-        </div>
-      </div> */}
       </div>
     </ObjectContextProvider>
   );
