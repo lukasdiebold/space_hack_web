@@ -124,6 +124,7 @@ import Atmospheric from '@/components/popups/atmospheric';
 import Energy from '@/components/popups/energy';
 import Greenhouse from '@/components/popups/greenhouse';
 import Water from '@/components/popups/water';
+import Mass from '@/components/popups/spacex-mass-distribution';
 
 import { NumberTicker } from '@/components/magicui/number-ticker';
 
@@ -153,7 +154,7 @@ export default function Home() {
           </div>
           <div className='page h-screen '>
             <div className='container m-auto flex flex-col justify-end items-end h-[100vh]'>
-              <Atmospheric />
+              <Mass />
 
               {/* <p className='text-white text-center text-[1rem] lg:text-2xl mb-20 '>
                 The Nissan Silvia S15 was the final and most refined version of
