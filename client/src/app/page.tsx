@@ -30,6 +30,7 @@ import { ScrollProgress } from '@/components/magicui/scroll-progress';
 export default function Home() {
   return (
     <ObjectContextProvider>
+      <ScrollProgress />
       <div className='h-[1800vh] z-[-100]'>
         <div className='sceneWrap fixed z-[-10] top-0 h-screen w-full'>
           <SceneWrap />
@@ -180,14 +181,25 @@ export default function Home() {
           </div> */}
           <div className='page h-screen'>
             <div className='container m-auto flex flex-col justify-center items-center h-[50vh]'>
-              <h1 className='text-4xl font-bold tracking-tighter md:text-5xl lg:text-7xl text-white'>
-                <HyperText>The Seed</HyperText>
-              </h1>
-              <div className='flex flex-col items-center mt-4'>
-                <Button>
-                  <Link href='/dashboard'>Access Terminal</Link>
-                </Button>
-              </div>
+              <Card className='w-full max-w-lg bg-white-300 rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-90 border border-gray-100'>
+                <CardHeader className='border-b border-white/10 flex justify-center text-center'>
+                  <div className='flex items-center justify-center'>
+                    {/* <span className='h-3 w-3 rounded-full bg-green-600 mr-2'></span> */}
+                    <CardTitle className='text-indigo-100'>
+                      Our resources
+                    </CardTitle>
+                  </div>
+                  {/* <CardDescription className='text-indigo-200/70'>
+    </CardDescription> */}
+                </CardHeader>
+                <CardContent className='space-y-6 pt-6 flex justify-center items-center'>
+                  <Button className='mx-auto'>
+                    <Link href='https://docs.google.com/document/d/1BLrFvee2hIgxi1khPur8gpsBbnMxCRPGLkHmKNqLlc4/edit?usp=sharing'>
+                      PDF
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
             </div>
           </div>
 
