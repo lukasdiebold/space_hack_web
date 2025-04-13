@@ -57,7 +57,7 @@ export default function FoodSupplyMonitor() {
             className='text-indigo-200/70 cursor-pointer hover:text-indigo-200'
             onClick={() => setInfoDialogOpen(true)}
           >
-            Food inventory, production, and consumption metrics
+            Thermal treatment/ chemical leaching of soil,  Controlled Environment Agriculture (CEA)
           </CardDescription>
         </CardHeader>
         

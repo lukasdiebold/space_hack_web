@@ -17,7 +17,6 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import {
   LineChart,
@@ -31,7 +30,7 @@ import {
 } from 'recharts';
 
 export default function EnergySourceMonitor() {
-  const [infoDialogOpen, setInfoDialogOpen] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState(false);
   
   // Sample data for power generation over time
   const powerData = [
@@ -71,21 +70,18 @@ export default function EnergySourceMonitor() {
 
   return (
     <>
-      <Card className='w-full max-w-lg bg-white-300 rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-90 border border-gray-100'>
-        <CardHeader className='border-b border-white/10'>
+      <Card 
+        onClick={() => setDialogOpen(true)}
+        className='w-full max-w-lg bg-white-300 rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-90 border border-gray-100 cursor-pointer hover:border-indigo-200/50 hover:shadow-lg transition-all'
+      >
+        <CardHeader className='border-b border-white/10 hover:bg-white/10 transition-colors'>
           <div className='flex items-center'>
             <span className='h-3 w-3 rounded-full bg-green-500 mr-2'></span>
-            <CardTitle 
-              className='text-indigo-100 cursor-pointer hover:text-indigo-50 transition-colors'
-              onClick={() => setInfoDialogOpen(true)}
-            >
+            <CardTitle className='text-indigo-100'>
               Nuclear Reactor Status
             </CardTitle>
           </div>
-          <CardDescription 
-            className='text-indigo-200/70 cursor-pointer hover:text-indigo-200 transition-colors'
-            onClick={() => setInfoDialogOpen(true)}
-          >
+          <CardDescription className='text-indigo-200/70'>
             Current power generation and consumption metrics
           </CardDescription>
         </CardHeader>
@@ -184,7 +180,7 @@ export default function EnergySourceMonitor() {
         </CardContent>
       </Card>
 
-      <AlertDialog open={infoDialogOpen} onOpenChange={setInfoDialogOpen}>
+      <AlertDialog open={dialogOpen} onOpenChange={setDialogOpen}>
         <AlertDialogContent className="max-w-3xl">
           <AlertDialogHeader>
             <AlertDialogTitle className="text-xl text-indigo-900">Nuclear Reactor Information</AlertDialogTitle>
