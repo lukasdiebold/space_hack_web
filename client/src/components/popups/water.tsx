@@ -33,7 +33,6 @@ import {
 export default function GreenhouseMonitor() {
   const [infoDialogOpen, setInfoDialogOpen] = useState(false);
 
-  // Weekly data for oxygen production and CO2 absorption
   const gasExchangeData = [
     { day: 'Mon', oxygen: 420, co2: 470 },
     { day: 'Tue', oxygen: 430, co2: 480 },
@@ -44,7 +43,6 @@ export default function GreenhouseMonitor() {
     { day: 'Sun', oxygen: 445, co2: 490 },
   ];
 
-  // Current metrics
   const temperature = 24.5; // °C
   const humidity = 65; // %
   const waterUsage = 340; // L/day
@@ -70,14 +68,12 @@ export default function GreenhouseMonitor() {
           </div>
           <CardDescription
             className='text-indigo-200/70 cursor-pointer hover:text-indigo-200'
-            onClick={() => setInfoDialogOpen(true)}
-          >
+            onClick={() => setInfoDialogOpen(true)}>
             Water ice near the Martian poles
           </CardDescription>
         </CardHeader>
 
         <CardContent className='space-y-6 pt-6'>
-          {/* Temperature and Humidity */}
           <div className='grid grid-cols-2 gap-4'>
             <div>
               <div className='flex justify-between text-sm mb-1'>
@@ -111,7 +107,6 @@ export default function GreenhouseMonitor() {
             </div>
           </div>
 
-          {/* Gas Exchange Graph */}
           <div className='backdrop-blur-md p-4 rounded-lg border border-white/20'>
             <h3 className='text-sm font-medium mb-4 text-indigo-100'>
               Weekly Gas Exchange
@@ -147,7 +142,6 @@ export default function GreenhouseMonitor() {
             </ResponsiveContainer>
           </div>
 
-          {/* Plant Health */}
           <div>
             <div className='flex justify-between mb-2'>
               <h3 className='text-sm font-medium text-indigo-100'>

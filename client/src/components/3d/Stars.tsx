@@ -1,8 +1,6 @@
 import React, { useMemo } from 'react';
 
 export default function Stars({ count = 10 }) {
-  // const texture = useParticleTexture();
-  // const scale = 0.1;
   const meshes = useMemo(() => {
     const temp = [];
     for (let i = 0; i < count; i++) {
@@ -14,7 +12,6 @@ export default function Stars({ count = 10 }) {
           <pointsMaterial
             size={0.3}
             sizeAttenuation={true}
-            // map={texture}
             transparent={true}
           />
         </points>

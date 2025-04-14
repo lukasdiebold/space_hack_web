@@ -17,7 +17,7 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
+} from '@/components/ui/alert-dialog';
 import {
   LineChart,
   Line,
@@ -31,8 +31,7 @@ import {
 
 export default function EnergySourceMonitor() {
   const [dialogOpen, setDialogOpen] = useState(false);
-  
-  // Sample data for power generation over time
+
   const powerData = [
     { time: '00:00', output: 320, consumption: 280 },
     { time: '04:00', output: 340, consumption: 290 },
@@ -42,12 +41,10 @@ export default function EnergySourceMonitor() {
     { time: '20:00', output: 350, consumption: 310 },
   ];
 
-  // Current metrics
   const currentPower = 370; // kW
   const fuelLevel = 78; // %
   const efficiency = 92; // %
 
-  // Power consumption breakdown
   const consumptionBreakdown = [
     { name: 'Life Support', value: 120 },
     { name: 'Agriculture', value: 95 },
@@ -56,24 +53,22 @@ export default function EnergySourceMonitor() {
     { name: 'Other', value: 40 },
   ];
 
-  // Additional information for the dialog
   const reactorInfo = {
-    type: "Compact Molten Salt Reactor (MSR)",
-    manufacturer: "Thorium Energy Technologies",
-    operatingTemp: "700°C",
-    coolingSystem: "Helium-based closed-cycle",
-    maintenanceSchedule: "Quarterly inspection and refueling",
-    backupSystems: "Dual redundant emergency generators",
-    safetyRating: "Class A+",
-    lifetimeRemaining: "15 years"
+    type: 'Compact Molten Salt Reactor (MSR)',
+    manufacturer: 'Thorium Energy Technologies',
+    operatingTemp: '700°C',
+    coolingSystem: 'Helium-based closed-cycle',
+    maintenanceSchedule: 'Quarterly inspection and refueling',
+    backupSystems: 'Dual redundant emergency generators',
+    safetyRating: 'Class A+',
+    lifetimeRemaining: '15 years',
   };
 
   return (
     <>
-      <Card 
+      <Card
         onClick={() => setDialogOpen(true)}
-        className='w-full max-w-lg bg-white-300 rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-90 border border-gray-100 cursor-pointer hover:border-indigo-200/50 hover:shadow-lg transition-all'
-      >
+        className='w-full max-w-lg bg-white-300 rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-90 border border-gray-100 cursor-pointer hover:border-indigo-200/50 hover:shadow-lg transition-all'>
         <CardHeader className='border-b border-white/10 hover:bg-white/10 transition-colors'>
           <div className='flex items-center'>
             <span className='h-3 w-3 rounded-full bg-green-500 mr-2'></span>
@@ -87,12 +82,13 @@ export default function EnergySourceMonitor() {
         </CardHeader>
 
         <CardContent className='space-y-6 pt-6'>
-          {/* Power Output and Fuel Level */}
           <div className='grid grid-cols-2 gap-4'>
             <div className='space-y-2'>
               <div className='flex justify-between text-sm'>
                 <span className='text-indigo-100/80'>Current Power</span>
-                <span className='font-bold text-indigo-100'>{currentPower} kW</span>
+                <span className='font-bold text-indigo-100'>
+                  {currentPower} kW
+                </span>
               </div>
               <div className='w-full bg-white/30 rounded-full h-2.5 overflow-hidden backdrop-blur-sm'>
                 <div
@@ -113,7 +109,6 @@ export default function EnergySourceMonitor() {
             </div>
           </div>
 
-          {/* Efficiency */}
           <div className='space-y-2'>
             <div className='flex justify-between text-sm'>
               <span className='text-indigo-100/80'>Reactor Efficiency</span>
@@ -126,14 +121,19 @@ export default function EnergySourceMonitor() {
             </div>
           </div>
 
-          {/* Power Generation Graph */}
           <div className='backdrop-blur-md p-4 rounded-lg border border-white/20'>
-            <h3 className='text-sm font-medium mb-4 text-indigo-100'>24-Hour Power Profile</h3>
+            <h3 className='text-sm font-medium mb-4 text-indigo-100'>
+              24-Hour Power Profile
+            </h3>
             <ResponsiveContainer width='100%' height={200}>
               <LineChart
                 data={powerData}
                 margin={{ top: 5, right: 5, left: 0, bottom: 5 }}>
-                <CartesianGrid strokeDasharray='3 3' opacity={0.2} stroke='#fff' />
+                <CartesianGrid
+                  strokeDasharray='3 3'
+                  opacity={0.2}
+                  stroke='#fff'
+                />
                 <XAxis dataKey='time' stroke='#fff' />
                 <YAxis stroke='#fff' />
                 <Tooltip />
@@ -156,7 +156,6 @@ export default function EnergySourceMonitor() {
             </ResponsiveContainer>
           </div>
 
-          {/* System Consumption */}
           <div>
             <h3 className='text-sm font-medium mb-2 text-indigo-100'>
               Power Consumption by System
@@ -164,7 +163,9 @@ export default function EnergySourceMonitor() {
             <div className='space-y-2'>
               {consumptionBreakdown.map((item) => (
                 <div key={item.name} className='flex items-center'>
-                  <div className='w-24 text-xs text-indigo-100'>{item.name}</div>
+                  <div className='w-24 text-xs text-indigo-100'>
+                    {item.name}
+                  </div>
                   <div className='flex-1'>
                     <div className='w-full bg-white/30 rounded-full h-2.5 overflow-hidden backdrop-blur-sm'>
                       <div
@@ -172,7 +173,9 @@ export default function EnergySourceMonitor() {
                         style={{ width: `${(item.value / 360) * 100}%` }}></div>
                     </div>
                   </div>
-                  <div className='w-12 text-right text-xs text-indigo-100'>{item.value} kW</div>
+                  <div className='w-12 text-right text-xs text-indigo-100'>
+                    {item.value} kW
+                  </div>
                 </div>
               ))}
             </div>
@@ -181,43 +184,88 @@ export default function EnergySourceMonitor() {
       </Card>
 
       <AlertDialog open={dialogOpen} onOpenChange={setDialogOpen}>
-        <AlertDialogContent className="max-w-3xl">
+        <AlertDialogContent className='max-w-3xl'>
           <AlertDialogHeader>
-            <AlertDialogTitle className="text-xl text-indigo-900">Nuclear Reactor Information</AlertDialogTitle>
+            <AlertDialogTitle className='text-xl text-indigo-900'>
+              Nuclear Reactor Information
+            </AlertDialogTitle>
             <AlertDialogDescription>
-              <div className="space-y-6 text-sm">
-                <p className="text-gray-700">
-                  The nuclear reactor provides primary power for all Mars base operations. 
-                  This panel displays real-time metrics on power generation, consumption, and reactor status.
+              <div className='space-y-6 text-sm'>
+                <p className='text-gray-700'>
+                  The nuclear reactor provides primary power for all Mars base
+                  operations. This panel displays real-time metrics on power
+                  generation, consumption, and reactor status.
                 </p>
-                
-                <div className="grid grid-cols-2 gap-4 mt-4 border-t pt-4">
+
+                <div className='grid grid-cols-2 gap-4 mt-4 border-t pt-4'>
                   <div>
-                    <h4 className="font-medium text-indigo-700 mb-2">Reactor Specifications</h4>
-                    <ul className="space-y-1 text-gray-600">
-                      <li><span className="font-medium">Type:</span> {reactorInfo.type}</li>
-                      <li><span className="font-medium">Manufacturer:</span> {reactorInfo.manufacturer}</li>
-                      <li><span className="font-medium">Operating Temperature:</span> {reactorInfo.operatingTemp}</li>
-                      <li><span className="font-medium">Cooling System:</span> {reactorInfo.coolingSystem}</li>
+                    <h4 className='font-medium text-indigo-700 mb-2'>
+                      Reactor Specifications
+                    </h4>
+                    <ul className='space-y-1 text-gray-600'>
+                      <li>
+                        <span className='font-medium'>Type:</span>{' '}
+                        {reactorInfo.type}
+                      </li>
+                      <li>
+                        <span className='font-medium'>Manufacturer:</span>{' '}
+                        {reactorInfo.manufacturer}
+                      </li>
+                      <li>
+                        <span className='font-medium'>
+                          Operating Temperature:
+                        </span>{' '}
+                        {reactorInfo.operatingTemp}
+                      </li>
+                      <li>
+                        <span className='font-medium'>Cooling System:</span>{' '}
+                        {reactorInfo.coolingSystem}
+                      </li>
                     </ul>
                   </div>
-                  
+
                   <div>
-                    <h4 className="font-medium text-indigo-700 mb-2">Maintenance & Safety</h4>
-                    <ul className="space-y-1 text-gray-600">
-                      <li><span className="font-medium">Maintenance Schedule:</span> {reactorInfo.maintenanceSchedule}</li>
-                      <li><span className="font-medium">Backup Systems:</span> {reactorInfo.backupSystems}</li>
-                      <li><span className="font-medium">Safety Rating:</span> {reactorInfo.safetyRating}</li>
-                      <li><span className="font-medium">Lifetime Remaining:</span> {reactorInfo.lifetimeRemaining}</li>
+                    <h4 className='font-medium text-indigo-700 mb-2'>
+                      Maintenance & Safety
+                    </h4>
+                    <ul className='space-y-1 text-gray-600'>
+                      <li>
+                        <span className='font-medium'>
+                          Maintenance Schedule:
+                        </span>{' '}
+                        {reactorInfo.maintenanceSchedule}
+                      </li>
+                      <li>
+                        <span className='font-medium'>Backup Systems:</span>{' '}
+                        {reactorInfo.backupSystems}
+                      </li>
+                      <li>
+                        <span className='font-medium'>Safety Rating:</span>{' '}
+                        {reactorInfo.safetyRating}
+                      </li>
+                      <li>
+                        <span className='font-medium'>Lifetime Remaining:</span>{' '}
+                        {reactorInfo.lifetimeRemaining}
+                      </li>
                     </ul>
                   </div>
                 </div>
-                
-                <div className="border-t pt-4">
-                  <h4 className="font-medium text-indigo-700 mb-2">Power Management</h4>
-                  <p className="text-gray-700">
-                    The current power output of {currentPower}kW supports all critical and non-critical systems with a {currentPower - consumptionBreakdown.reduce((acc, item) => acc + item.value, 0)}kW reserve.
-                    With {fuelLevel}% fuel remaining, the next refueling is scheduled in approximately {Math.floor(fuelLevel / 3)} months.
+
+                <div className='border-t pt-4'>
+                  <h4 className='font-medium text-indigo-700 mb-2'>
+                    Power Management
+                  </h4>
+                  <p className='text-gray-700'>
+                    The current power output of {currentPower}kW supports all
+                    critical and non-critical systems with a{' '}
+                    {currentPower -
+                      consumptionBreakdown.reduce(
+                        (acc, item) => acc + item.value,
+                        0
+                      )}
+                    kW reserve. With {fuelLevel}% fuel remaining, the next
+                    refueling is scheduled in approximately{' '}
+                    {Math.floor(fuelLevel / 3)} months.
                   </p>
                 </div>
               </div>

@@ -20,7 +20,6 @@ import {
 } from 'recharts';
 
 export default function GreenhouseMonitor() {
-  // Weekly data for oxygen production and CO2 absorption
   const gasExchangeData = [
     { day: 'Mon', oxygen: 420, co2: 470 },
     { day: 'Tue', oxygen: 430, co2: 480 },
@@ -31,12 +30,10 @@ export default function GreenhouseMonitor() {
     { day: 'Sun', oxygen: 445, co2: 490 },
   ];
 
-  // Current metrics
   const temperature = 24.5; // °C
   const humidity = 65; // %
   const waterUsage = 340; // L/day
 
-  // Plant health status
   const plantHealth = [
     { species: 'Lettuce', health: 95 },
     { species: 'Potatoes', health: 87 },
@@ -58,7 +55,6 @@ export default function GreenhouseMonitor() {
       </CardHeader>
 
       <CardContent className='space-y-6 pt-6'>
-        {/* Temperature and Humidity */}
         <div className='grid grid-cols-2 gap-4'>
           <div>
             <div className='flex justify-between text-sm mb-1'>
@@ -90,14 +86,19 @@ export default function GreenhouseMonitor() {
           </div>
         </div>
 
-        {/* Gas Exchange Graph */}
         <div className='backdrop-blur-md p-4 rounded-lg border border-white/20'>
-          <h3 className='text-sm font-medium mb-4 text-indigo-100'>Weekly Gas Exchange</h3>
+          <h3 className='text-sm font-medium mb-4 text-indigo-100'>
+            Weekly Gas Exchange
+          </h3>
           <ResponsiveContainer width='100%' height={200}>
             <LineChart
               data={gasExchangeData}
               margin={{ top: 5, right: 5, left: 0, bottom: 5 }}>
-              <CartesianGrid strokeDasharray='3 3' opacity={0.2} stroke='#fff' />
+              <CartesianGrid
+                strokeDasharray='3 3'
+                opacity={0.2}
+                stroke='#fff'
+              />
               <XAxis dataKey='day' stroke='#fff' />
               <YAxis stroke='#fff' />
               <Tooltip />
@@ -120,10 +121,11 @@ export default function GreenhouseMonitor() {
           </ResponsiveContainer>
         </div>
 
-        {/* Plant Health */}
         <div>
           <div className='flex justify-between mb-2'>
-            <h3 className='text-sm font-medium text-indigo-100'>Plant Health Status</h3>
+            <h3 className='text-sm font-medium text-indigo-100'>
+              Plant Health Status
+            </h3>
             <div className='text-sm'>
               <span className='text-xs px-2 py-0.5 rounded-full bg-green-100 text-green-800'>
                 Water: {waterUsage} L/day
@@ -133,7 +135,9 @@ export default function GreenhouseMonitor() {
           <div className='space-y-2'>
             {plantHealth.map((plant) => (
               <div key={plant.species} className='flex items-center'>
-                <div className='w-24 text-xs text-indigo-100'>{plant.species}</div>
+                <div className='w-24 text-xs text-indigo-100'>
+                  {plant.species}
+                </div>
                 <div className='flex-1'>
                   <div className='w-full bg-white/30 rounded-full h-2.5 overflow-hidden backdrop-blur-sm'>
                     <div
@@ -147,7 +151,9 @@ export default function GreenhouseMonitor() {
                       style={{ width: `${plant.health}%` }}></div>
                   </div>
                 </div>
-                <div className='w-12 text-right text-xs text-indigo-100'>{plant.health}%</div>
+                <div className='w-12 text-right text-xs text-indigo-100'>
+                  {plant.health}%
+                </div>
               </div>
             ))}
           </div>
