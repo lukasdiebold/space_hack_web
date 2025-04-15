@@ -22,7 +22,7 @@ Watch our robot take commands and stream directly from its camera to the mission
 
 📺 [Watch on YouTube](https://youtu.be/Zs3IF_sNMGA)
 
-[![Watch on YouTube](http://img.youtube.com/vi/your-video-link/0.jpg)](https://youtu.be/Zs3IF_sNMGA 'Martian Autonomy Dashboard Demo')
+[![Watch on YouTube](http://img.youtube.com/vi/Zs3IF_sNMGA/0.jpg)](https://youtu.be/Zs3IF_sNMGA 'Martian Autonomy Dashboard Demo')
 
 ## Team Members
 
