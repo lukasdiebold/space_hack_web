@@ -24,13 +24,16 @@
 @keyframes meteor {
   0% {
     transform: rotate(var(--angle)) translateX(0);
-    opacity: 1;}
+    opacity: 1;
+  }
   70% {
-    opacity: 1;}
+    opacity: 1;
+  }
   100% {
     transform: rotate(var(--angle)) translateX(-500px);
-    opacity: 0;}
+    opacity: 0;
   }
+}
 
 @theme inline {
   --color-background: var(--background);
@@ -75,25 +78,25 @@
   --animate-meteor: meteor 5s linear infinite;
   --animate-aurora: aurora 8s ease-in-out infinite alternate;
   @keyframes aurora {
-  0% {
-    backgroundPosition: 0% 50%;
-    transform: rotate(-5deg) scale(0.9);
+    0% {
+      backgroundposition: 0% 50%;
+      transform: rotate(-5deg) scale(0.9);
     }
-  25% {
-    backgroundPosition: 50% 100%;
-    transform: rotate(5deg) scale(1.1);
+    25% {
+      backgroundposition: 50% 100%;
+      transform: rotate(5deg) scale(1.1);
     }
-  50% {
-    backgroundPosition: 100% 50%;
-    transform: rotate(-3deg) scale(0.95);
+    50% {
+      backgroundposition: 100% 50%;
+      transform: rotate(-3deg) scale(0.95);
     }
-  75% {
-    backgroundPosition: 50% 0%;
-    transform: rotate(3deg) scale(1.05);
+    75% {
+      backgroundposition: 50% 0%;
+      transform: rotate(3deg) scale(1.05);
     }
-  100% {
-    backgroundPosition: 0% 50%;
-    transform: rotate(-5deg) scale(0.9);
+    100% {
+      backgroundposition: 0% 50%;
+      transform: rotate(-5deg) scale(0.9);
     }
   }
   --rainbow: rainbow var(--speed, 2s) infinite linear;
@@ -101,25 +104,26 @@
   --color-color-4: var(----color-4);
   --color-color-3: var(----color-3);
   --color-color-2: var(----color-2);
-  --color-color-1: var(----color-1)
-;
+  --color-color-1: var(----color-1);
   @keyframes rainbow {
-  0% {
-    background-position: 0%;
+    0% {
+      background-position: 0%;
     }
-  100% {
-    background-position: 200%;
+    100% {
+      background-position: 200%;
     }
   }
   --animate-pulse: pulse var(--duration) ease-out infinite;
   @keyframes pulse {
-  0%, 100% {
-    boxShadow: 0 0 0 0 var(--pulse-color);
+    0%,
+    100% {
+      boxshadow: 0 0 0 0 var(--pulse-color);
     }
-  50% {
-    boxShadow: 0 0 0 8px var(--pulse-color);
+    50% {
+      boxshadow: 0 0 0 8px var(--pulse-color);
     }
-  }}
+  }
+}
 
 :root {
   --radius: 0.625rem;
@@ -207,4 +211,24 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Hide scrollbars globally */
+html,
+body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Utility class to hide scrollbars on any element */
+.scrollbar-hide {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
